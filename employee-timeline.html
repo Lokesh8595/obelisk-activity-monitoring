@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Day Timeline - Obelisk Activity Monitoring</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="timeline">
+  <div class="app-layout" id="appLayout">
+    <!-- Left Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-wrapper">
+          <div class="brand-icon">O</div>
+          <div class="brand-text">
+            <span class="brand-title">OBELISK</span>
+            <span class="brand-subtitle">ERP Monitoring</span>
+          </div>
+        </div>
+        <button class="sidebar-toggle-btn" id="sidebarToggle" title="Toggle Sidebar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <a href="dashboard.html" class="nav-item">
+            <span class="icon">📊</span>
+            <span>Dashboard</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Monitoring</div>
+        <div class="nav-group">
+          <a href="dashboard.html" class="nav-item nav-item-sub">
+            <span>• Overview</span>
+          </a>
+          <a href="employee-timeline.html" class="nav-item nav-item-sub active">
+            <span>• Employee Timeline</span>
+          </a>
+          <a href="activity.html" class="nav-item nav-item-sub">
+            <span>• App & Web Activity</span>
+          </a>
+          <a href="screenshots.html" class="nav-item nav-item-sub">
+            <span>• Screenshots</span>
+          </a>
+          <a href="productivity.html" class="nav-item nav-item-sub">
+            <span>• Productivity</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Management</div>
+        <div class="nav-group">
+          <a href="timesheets.html" class="nav-item">
+            <span class="icon">⏱️</span>
+            <span>Timesheets</span>
+          </a>
+          <a href="employee-detail.html" class="nav-item">
+            <span class="icon">👥</span>
+            <span>Employees</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Administration</div>
+        <div class="nav-group">
+          <a href="monitoring-settings.html" class="nav-item">
+            <span class="icon">⚙️</span>
+            <span>Monitoring Settings</span>
+          </a>
+          <a href="productivity-rules.html" class="nav-item">
+            <span class="icon">🎯</span>
+            <span>Productivity Rules</span>
+          </a>
+          <a href="consent-management.html" class="nav-item">
+            <span class="icon">🛡️</span>
+            <span>Consent Management</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-avatar">AP<span class="status-dot"></span></div>
+        <div class="user-info">
+          <span class="user-name">Akshay Prajapati</span>
+          <span class="user-role">System Admin</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      <header class="top-header">
+        <div class="header-left">
+          <h1 class="page-title">Employee Day Timeline</h1>
+          <div class="breadcrumb">
+            <a href="dashboard.html">Home</a>
+            <span>/</span>
+            <span>Activity Monitoring</span>
+            <span>/</span>
+            <span>Employee Timeline</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div class="header-date">Mon, Aug 10, 2026</div>
+          <div class="header-sync-status">
+            <span class="pulse-dot"></span>
+            <span>Last synced 2 min ago</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <!-- Controls & Employee Selector -->
+        <div class="filter-bar">
+          <div class="filter-group">
+            <span class="filter-label">Employee:</span>
+            <select class="form-control" style="font-weight: 600;">
+              <option selected>Akshay Prajapati (Core Engineering)</option>
+              <option>Sarah Chen (Product & UI/UX)</option>
+              <option>Marcus Vance (Core Engineering)</option>
+              <option>Elena Rostova (Quality Assurance)</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label">Date:</span>
+            <input type="date" class="form-control" value="2026-08-10">
+          </div>
+
+          <div style="display: flex; gap: 6px; margin-left: auto;">
+            <button class="btn btn-secondary btn-sm">◀ Previous Day</button>
+            <button class="btn btn-secondary btn-sm">Today</button>
+            <button class="btn btn-secondary btn-sm">Next Day ▶</button>
+          </div>
+        </div>
+
+        <!-- Employee Summary Card -->
+        <div class="card timeline-card">
+          <div class="timeline-header">
+            <div class="timeline-emp-info">
+              <div class="emp-avatar" style="width: 48px; height: 48px; font-size: 18px;">AP</div>
+              <div>
+                <h2 style="font-size: 18px; font-weight: 700; color: var(--text-main);">Akshay Prajapati</h2>
+                <div style="display: flex; gap: 12px; font-size: 12px; color: var(--text-muted); margin-top: 2px;">
+                  <span>Team: <strong>Core Engineering</strong></span>
+                  <span>•</span>
+                  <span>Project: <strong>Obelisk ERP</strong></span>
+                  <span>•</span>
+                  <span>Status: <strong style="color: var(--productive-green);">Active</strong></span>
+                </div>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 24px; align-items: center;">
+              <div>
+                <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Productivity Score</div>
+                <div style="font-size: 22px; font-weight: 800; color: var(--productive-green);">88%</div>
+              </div>
+              <div style="border-left: 1px solid var(--border-color); padding-left: 20px;">
+                <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Total Active Time</div>
+                <div style="font-size: 18px; font-weight: 700; color: var(--text-main);">6H 42M</div>
+              </div>
+              <div style="border-left: 1px solid var(--border-color); padding-left: 20px;">
+                <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Total Idle Time</div>
+                <div style="font-size: 18px; font-weight: 700; color: var(--idle-amber);">48M</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Color Legend -->
+          <div style="display: flex; gap: 16px; margin-bottom: 16px; font-size: 12px; font-weight: 500;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span style="width: 12px; height: 12px; background: var(--productive-green); border-radius: 2px;"></span>
+              <span>Productive</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span style="width: 12px; height: 12px; background: var(--primary-500); border-radius: 2px;"></span>
+              <span>Neutral</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span style="width: 12px; height: 12px; background: var(--unproductive-red); border-radius: 2px;"></span>
+              <span>Unproductive</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span style="width: 12px; height: 12px; background: var(--idle-amber); border-radius: 2px;"></span>
+              <span>Idle</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span style="display: inline-block; width: 2px; height: 12px; background: #000; border-right: 1px stroke #fff;"></span>
+              <span>📷 Screenshot Captured</span>
+            </div>
+          </div>
+
+          <!-- Horizontal Hours Axis -->
+          <div class="timeline-hours-axis">
+            <span>09:00</span>
+            <span>10:00</span>
+            <span>11:00</span>
+            <span>12:00</span>
+            <span>13:00</span>
+            <span>14:00</span>
+            <span>15:00</span>
+            <span>16:00</span>
+            <span>17:00</span>
+          </div>
+
+          <!-- Horizontal Timeline Track Bar -->
+          <div class="timeline-track" id="timelineTrack">
+            <!-- 09:00 - 09:30 Active (Productive) 12.5% width -->
+            <div class="timeline-block block-productive" style="width: 12.5%;" 
+                 data-app="VS Code" data-window="App.tsx - Obelisk ERP" data-domain="github.com" data-start="09:00" data-end="09:30" data-duration="30m 00s" data-cat="Productive">
+            </div>
+
+            <!-- 09:30 - 09:42 Idle 5% width -->
+            <div class="timeline-block block-idle" style="width: 5%;" 
+                 data-app="System Idle" data-window="Away from Desk" data-domain="N/A" data-start="09:30" data-end="09:42" data-duration="12m 00s" data-cat="Idle">
+            </div>
+
+            <!-- 09:42 - 10:30 Active (Productive) 20% width -->
+            <div class="timeline-block block-productive" style="width: 20%;" 
+                 data-app="Cursor IDE" data-window="server.ts - Backend API" data-domain="github.com/obelisk" data-start="09:42" data-end="10:30" data-duration="48m 00s" data-cat="Productive">
+            </div>
+
+            <!-- Screenshot Marker at 10:30 (37.5% position) -->
+            <div class="screenshot-marker" style="left: 37.5%;" title="Screenshot Captured at 10:30 AM"></div>
+
+            <!-- 10:30 - 11:15 Active (Productive) 18.75% width -->
+            <div class="timeline-block block-productive" style="width: 18.75%;" 
+                 data-app="Slack" data-window="#engineering-chat - Obelisk Work" data-domain="slack.com" data-start="10:30" data-end="11:15" data-duration="45m 00s" data-cat="Productive">
+            </div>
+
+            <!-- 11:15 - 11:45 Neutral 12.5% width -->
+            <div class="timeline-block block-neutral" style="width: 12.5%;" 
+                 data-app="Google Chrome" data-window="TechNews - HackerNews" data-domain="news.ycombinator.com" data-start="11:15" data-end="11:45" data-duration="30m 00s" data-cat="Neutral">
+            </div>
+
+            <!-- 11:45 - 12:00 Unproductive 6.25% width -->
+            <div class="timeline-block block-unproductive" style="width: 6.25%;" 
+                 data-app="Google Chrome" data-window="YouTube - Tech Podcast" data-domain="youtube.com" data-start="11:45" data-end="12:00" data-duration="15m 00s" data-cat="Unproductive">
+            </div>
+
+            <!-- 12:00 - 13:00 Idle 25% width -->
+            <div class="timeline-block block-idle" style="width: 25%;" 
+                 data-app="System Idle" data-window="Lunch Break" data-domain="N/A" data-start="12:00" data-end="13:00" data-duration="1h 00m" data-cat="Idle">
+            </div>
+          </div>
+
+          <!-- Hover/Click Detail Card -->
+          <div class="timeline-hover-card" id="detailCard">
+            <div class="hover-field">
+              <span class="hover-label">Application</span>
+              <span class="hover-value" id="cardApp">Cursor IDE</span>
+            </div>
+            <div class="hover-field">
+              <span class="hover-label">Window Title</span>
+              <span class="hover-value" id="cardWindow">server.ts - Backend API</span>
+            </div>
+            <div class="hover-field">
+              <span class="hover-label">Domain</span>
+              <span class="hover-value" id="cardDomain">github.com/obelisk</span>
+            </div>
+            <div class="hover-field">
+              <span class="hover-label">Time Interval</span>
+              <span class="hover-value" id="cardInterval">09:42 - 10:30</span>
+            </div>
+            <div class="hover-field">
+              <span class="hover-label">Duration</span>
+              <span class="hover-value" id="cardDuration">48m 00s</span>
+            </div>
+            <div class="hover-field">
+              <span class="hover-label">Category</span>
+              <span class="badge badge-productive" id="cardCat">Productive</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity Timeline Logs List -->
+        <div class="card">
+          <h3 class="card-title" style="margin-bottom: 14px;">Detailed Chronological Activity Logs</h3>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Time Slot</th>
+                  <th>App / Process</th>
+                  <th>Window / Web Title</th>
+                  <th>Domain</th>
+                  <th>Duration</th>
+                  <th>Classification</th>
+                  <th>Screenshot</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>09:00 - 09:30</td>
+                  <td><strong>VS Code</strong></td>
+                  <td>App.tsx - Obelisk ERP</td>
+                  <td>github.com</td>
+                  <td>30m 00s</td>
+                  <td><span class="badge badge-productive">Productive</span></td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>09:30 - 09:42</td>
+                  <td><strong>System Idle</strong></td>
+                  <td>Away from Desk</td>
+                  <td>-</td>
+                  <td>12m 00s</td>
+                  <td><span class="badge badge-idle">Idle</span></td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>09:42 - 10:30</td>
+                  <td><strong>Cursor IDE</strong></td>
+                  <td>server.ts - Backend API</td>
+                  <td>github.com/obelisk</td>
+                  <td>48m 00s</td>
+                  <td><span class="badge badge-productive">Productive</span></td>
+                  <td><a href="screenshots.html" class="badge badge-synced">📷 View Shot</a></td>
+                </tr>
+                <tr>
+                  <td>10:30 - 11:15</td>
+                  <td><strong>Slack.exe</strong></td>
+                  <td>#engineering-chat</td>
+                  <td>slack.com</td>
+                  <td>45m 00s</td>
+                  <td><span class="badge badge-productive">Productive</span></td>
+                  <td><a href="screenshots.html" class="badge badge-synced">📷 View Shot</a></td>
+                </tr>
+                <tr>
+                  <td>11:15 - 11:45</td>
+                  <td><strong>Chrome.exe</strong></td>
+                  <td>Hacker News Frontpage</td>
+                  <td>news.ycombinator.com</td>
+                  <td>30m 00s</td>
+                  <td><span class="badge badge-neutral">Neutral</span></td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>11:45 - 12:00</td>
+                  <td><strong>Chrome.exe</strong></td>
+                  <td>YouTube - Tech Podcast</td>
+                  <td>youtube.com</td>
+                  <td>15m 00s</td>
+                  <td><span class="badge badge-unproductive">Unproductive</span></td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="js/static-data.js"></script>
+  <script src="js/tracking-service.js"></script>
+  <script src="js/app-common.js"></script>
+  <script src="js/pages.js"></script>
+</body>
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App & Website Activity - Obelisk Activity Monitoring</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="activity">
+  <div class="app-layout" id="appLayout">
+    <!-- Left Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-wrapper">
+          <div class="brand-icon">O</div>
+          <div class="brand-text">
+            <span class="brand-title">OBELISK</span>
+            <span class="brand-subtitle">ERP Monitoring</span>
+          </div>
+        </div>
+        <button class="sidebar-toggle-btn" id="sidebarToggle" title="Toggle Sidebar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <a href="dashboard.html" class="nav-item">
+            <span class="icon">📊</span>
+            <span>Dashboard</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Monitoring</div>
+        <div class="nav-group">
+          <a href="dashboard.html" class="nav-item nav-item-sub">
+            <span>• Overview</span>
+          </a>
+          <a href="employee-timeline.html" class="nav-item nav-item-sub">
+            <span>• Employee Timeline</span>
+          </a>
+          <a href="activity.html" class="nav-item nav-item-sub active">
+            <span>• App & Web Activity</span>
+          </a>
+          <a href="screenshots.html" class="nav-item nav-item-sub">
+            <span>• Screenshots</span>
+          </a>
+          <a href="productivity.html" class="nav-item nav-item-sub">
+            <span>• Productivity</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Management</div>
+        <div class="nav-group">
+          <a href="timesheets.html" class="nav-item">
+            <span class="icon">⏱️</span>
+            <span>Timesheets</span>
+          </a>
+          <a href="employee-detail.html" class="nav-item">
+            <span class="icon">👥</span>
+            <span>Employees</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Administration</div>
+        <div class="nav-group">
+          <a href="monitoring-settings.html" class="nav-item">
+            <span class="icon">⚙️</span>
+            <span>Monitoring Settings</span>
+          </a>
+          <a href="productivity-rules.html" class="nav-item">
+            <span class="icon">🎯</span>
+            <span>Productivity Rules</span>
+          </a>
+          <a href="consent-management.html" class="nav-item">
+            <span class="icon">🛡️</span>
+            <span>Consent Management</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-avatar">AP<span class="status-dot"></span></div>
+        <div class="user-info">
+          <span class="user-name">Akshay Prajapati</span>
+          <span class="user-role">System Admin</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="top-header">
+        <div class="header-left">
+          <h1 class="page-title">App & Website Usage Analytics</h1>
+          <div class="breadcrumb">
+            <a href="dashboard.html">Home</a>
+            <span>/</span>
+            <span>Activity Monitoring</span>
+            <span>/</span>
+            <span>App & Web Activity</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div class="header-date">Mon, Aug 10, 2026</div>
+          <div class="header-sync-status">
+            <span class="pulse-dot"></span>
+            <span>Last synced 5 min ago</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <!-- Filters Bar -->
+        <div class="filter-bar">
+          <div class="filter-group">
+            <span class="filter-label">Employee:</span>
+            <select class="form-control">
+              <option value="">All Employees (148)</option>
+              <option selected>Akshay Prajapati</option>
+              <option>Sarah Chen</option>
+              <option>Marcus Vance</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label">Team:</span>
+            <select class="form-control">
+              <option value="">All Teams</option>
+              <option selected>Core Engineering</option>
+              <option>Product & UI/UX</option>
+              <option>Quality Assurance</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label">Project:</span>
+            <select class="form-control">
+              <option value="">All Projects</option>
+              <option selected>Obelisk ERP</option>
+              <option>Mobile Redesign</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label">Date Range:</span>
+            <select class="form-control">
+              <option selected>Today (Aug 10, 2026)</option>
+              <option>Yesterday</option>
+              <option>Last 7 Days</option>
+              <option>This Month</option>
+            </select>
+          </div>
+
+          <button class="btn btn-secondary btn-sm" style="margin-left: auto;" onclick="alert('Exporting Usage CSV...')">📥 Export CSV</button>
+        </div>
+
+        <!-- Four Top Summary Metrics -->
+        <div class="summary-grid" style="grid-template-columns: repeat(4, 1fr);">
+          <div class="summary-card">
+            <div class="summary-card-header">
+              <div class="summary-card-icon icon-blue">💻</div>
+              <span class="badge badge-active">Active</span>
+            </div>
+            <div>
+              <div class="summary-value">6h 42m</div>
+              <div class="summary-label">Total Active Time</div>
+            </div>
+          </div>
+
+          <div class="summary-card">
+            <div class="summary-card-header">
+              <div class="summary-card-icon icon-green">✅</div>
+              <span class="badge badge-productive">79% Share</span>
+            </div>
+            <div>
+              <div class="summary-value" style="color: var(--productive-green);">5h 18m</div>
+              <div class="summary-label">Productive Time</div>
+            </div>
+          </div>
+
+          <div class="summary-card">
+            <div class="summary-card-header">
+              <div class="summary-card-icon icon-red">🚫</div>
+              <span class="badge badge-unproductive">9% Share</span>
+            </div>
+            <div>
+              <div class="summary-value" style="color: var(--unproductive-red);">38m</div>
+              <div class="summary-label">Unproductive Time</div>
+            </div>
+          </div>
+
+          <div class="summary-card">
+            <div class="summary-card-header">
+              <div class="summary-card-icon icon-gray">⚖️</div>
+              <span class="badge badge-neutral">12% Share</span>
+            </div>
+            <div>
+              <div class="summary-value" style="color: var(--neutral-gray);">46m</div>
+              <div class="summary-label">Neutral Time</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Application Table -->
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <div style="padding: 16px 20px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+            <h2 class="card-title">🖥️ Desktop Application Activity</h2>
+            <span style="font-size: 12px; color: var(--text-muted);">Top 5 Applications</span>
+          </div>
+
+          <div class="table-responsive" style="border: none; border-radius: 0;">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Application</th>
+                  <th>Category</th>
+                  <th>Duration</th>
+                  <th>Usage %</th>
+                  <th>Window Switches</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 10px; font-weight: 600;">
+                      <span style="font-size: 16px;">💻</span>
+                      <span>VS Code / Cursor.exe</span>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-productive">Productive</span></td>
+                  <td><strong>4h 20m</strong></td>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <div class="progress-bar-container" style="width: 100px;">
+                        <div class="progress-bar-fill progress-high" style="width: 64%;"></div>
+                      </div>
+                      <span>64%</span>
+                    </div>
+                  </td>
+                  <td>142 switches</td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 10px; font-weight: 600;">
+                      <span style="font-size: 16px;">🌐</span>
+                      <span>Google Chrome.exe</span>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-neutral">Neutral</span></td>
+                  <td><strong>2h 10m</strong></td>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <div class="progress-bar-container" style="width: 100px;">
+                        <div class="progress-bar-fill progress-medium" style="width: 32%;"></div>
+                      </div>
+                      <span>32%</span>
+                    </div>
+                  </td>
+                  <td>85 switches</td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 10px; font-weight: 600;">
+                      <span style="font-size: 16px;">💬</span>
+                      <span>Slack.exe</span>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-productive">Productive</span></td>
+                  <td><strong>1h 15m</strong></td>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <div class="progress-bar-container" style="width: 100px;">
+                        <div class="progress-bar-fill progress-high" style="width: 18%;"></div>
+                      </div>
+                      <span>18%</span>
+                    </div>
+                  </td>
+                  <td>94 switches</td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 10px; font-weight: 600;">
+                      <span style="font-size: 16px;">🎨</span>
+                      <span>Figma.exe</span>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-productive">Productive</span></td>
+                  <td><strong>1h 05m</strong></td>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <div class="progress-bar-container" style="width: 100px;">
+                        <div class="progress-bar-fill progress-high" style="width: 16%;"></div>
+                      </div>
+                      <span>16%</span>
+                    </div>
+                  </td>
+                  <td>40 switches</td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 10px; font-weight: 600;">
+                      <span style="font-size: 16px;">▶️</span>
+                      <span>YouTube App / Web</span>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-unproductive">Unproductive</span></td>
+                  <td><strong>35m</strong></td>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <div class="progress-bar-container" style="width: 100px;">
+                        <div class="progress-bar-fill progress-low" style="width: 8%;"></div>
+                      </div>
+                      <span>8%</span>
+                    </div>
+                  </td>
+                  <td>18 switches</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Website Table -->
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <div style="padding: 16px 20px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+            <h2 class="card-title">🌐 Web Domain Browsing Usage</h2>
+            <span style="font-size: 12px; color: var(--text-muted);">Top Domains</span>
+          </div>
+
+          <div class="table-responsive" style="border: none; border-radius: 0;">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Domain</th>
+                  <th>Category</th>
+                  <th>Duration</th>
+                  <th>Visits / Switches</th>
+                  <th>Usage %</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px; font-weight: 600;">
+                      <span style="color: var(--primary-600);">🌐</span>
+                      <span>github.com</span>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-productive">Productive</span></td>
+                  <td><strong>2h 45m</strong></td>
+                  <td>62 visits</td>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <div class="progress-bar-container" style="width: 100px;">
+                        <div class="progress-bar-fill progress-high" style="width: 41%;"></div>
+                      </div>
+                      <span>41%</span>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px; font-weight: 600;">
+                      <span style="color: var(--primary-600);">🌐</span>
+                      <span>stackoverflow.com</span>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-productive">Productive</span></td>
+                  <td><strong>1h 10m</strong></td>
+                  <td>28 visits</td>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <div class="progress-bar-container" style="width: 100px;">
+                        <div class="progress-bar-fill progress-high" style="width: 17%;"></div>
+                      </div>
+                      <span>17%</span>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px; font-weight: 600;">
+                      <span style="color: var(--primary-600);">🌐</span>
+                      <span>docs.google.com</span>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-neutral">Neutral</span></td>
+                  <td><strong>45m</strong></td>
+                  <td>19 visits</td>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <div class="progress-bar-container" style="width: 100px;">
+                        <div class="progress-bar-fill progress-medium" style="width: 11%;"></div>
+                      </div>
+                      <span>11%</span>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px; font-weight: 600;">
+                      <span style="color: var(--primary-600);">🌐</span>
+                      <span>youtube.com</span>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-unproductive">Unproductive</span></td>
+                  <td><strong>35m</strong></td>
+                  <td>12 visits</td>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <div class="progress-bar-container" style="width: 100px;">
+                        <div class="progress-bar-fill progress-low" style="width: 8%;"></div>
+                      </div>
+                      <span>8%</span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="js/static-data.js"></script>
+  <script src="js/tracking-service.js"></script>
+  <script src="js/app-common.js"></script>
+  <script src="js/pages.js"></script>
+</body>
+</html>

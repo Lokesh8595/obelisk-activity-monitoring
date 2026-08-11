@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Profile Detail - Obelisk Activity Monitoring</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="employeeDetail">
+  <div class="app-layout" id="appLayout">
+    <!-- Left Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-wrapper">
+          <div class="brand-icon">O</div>
+          <div class="brand-text">
+            <span class="brand-title">OBELISK</span>
+            <span class="brand-subtitle">ERP Monitoring</span>
+          </div>
+        </div>
+        <button class="sidebar-toggle-btn" id="sidebarToggle" title="Toggle Sidebar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <a href="dashboard.html" class="nav-item">
+            <span class="icon">📊</span>
+            <span>Dashboard</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Monitoring</div>
+        <div class="nav-group">
+          <a href="dashboard.html" class="nav-item nav-item-sub">
+            <span>• Overview</span>
+          </a>
+          <a href="employee-timeline.html" class="nav-item nav-item-sub">
+            <span>• Employee Timeline</span>
+          </a>
+          <a href="activity.html" class="nav-item nav-item-sub">
+            <span>• App & Web Activity</span>
+          </a>
+          <a href="screenshots.html" class="nav-item nav-item-sub">
+            <span>• Screenshots</span>
+          </a>
+          <a href="productivity.html" class="nav-item nav-item-sub">
+            <span>• Productivity</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Management</div>
+        <div class="nav-group">
+          <a href="timesheets.html" class="nav-item">
+            <span class="icon">⏱️</span>
+            <span>Timesheets</span>
+          </a>
+          <a href="employee-detail.html" class="nav-item active">
+            <span class="icon">👥</span>
+            <span>Employees</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Administration</div>
+        <div class="nav-group">
+          <a href="monitoring-settings.html" class="nav-item">
+            <span class="icon">⚙️</span>
+            <span>Monitoring Settings</span>
+          </a>
+          <a href="productivity-rules.html" class="nav-item">
+            <span class="icon">🎯</span>
+            <span>Productivity Rules</span>
+          </a>
+          <a href="consent-management.html" class="nav-item">
+            <span class="icon">🛡️</span>
+            <span>Consent Management</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-avatar">AP<span class="status-dot"></span></div>
+        <div class="user-info">
+          <span class="user-name">Akshay Prajapati</span>
+          <span class="user-role">System Admin</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="top-header">
+        <div class="header-left">
+          <h1 class="page-title">Employee Detailed Profile & Audit</h1>
+          <div class="breadcrumb">
+            <a href="dashboard.html">Home</a>
+            <span>/</span>
+            <span>Employees</span>
+            <span>/</span>
+            <span>Akshay Prajapati</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div class="header-date">Mon, Aug 10, 2026</div>
+          <div class="header-sync-status">
+            <span class="pulse-dot"></span>
+            <span>Last synced 2 min ago</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <!-- 1. Employee Header Info Card -->
+        <div class="card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div class="emp-avatar" style="width: 56px; height: 56px; font-size: 22px;">AP</div>
+            <div>
+              <h1 style="font-size: 20px; font-weight: 800; color: var(--text-main);">Akshay Prajapati</h1>
+              <div style="font-size: 13px; color: var(--text-muted); display: flex; gap: 12px; margin-top: 4px;">
+                <span>Department: <strong>Engineering</strong></span>
+                <span>•</span>
+                <span>Team: <strong>Core Engineering</strong></span>
+                <span>•</span>
+                <span>Project: <strong>Obelisk ERP</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 12px; align-items: center;">
+            <span class="badge badge-active" style="font-size: 13px; padding: 6px 12px;">Monitoring Status: Active</span>
+            <a href="employee-timeline.html" class="btn btn-primary">⏱️ View Full Timeline</a>
+          </div>
+        </div>
+
+        <!-- 2. Today's Summary Metrics (7 Metric Blocks) -->
+        <div class="summary-grid" style="grid-template-columns: repeat(7, 1fr);">
+          <div class="card" style="padding: 14px;">
+            <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">GROSS HOURS</div>
+            <div style="font-size: 18px; font-weight: 800; color: var(--text-main); margin-top: 4px;">8H 00M</div>
+          </div>
+
+          <div class="card" style="padding: 14px;">
+            <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">IDLE HOURS</div>
+            <div style="font-size: 18px; font-weight: 800; color: var(--idle-amber); margin-top: 4px;">48M</div>
+          </div>
+
+          <div class="card" style="padding: 14px;">
+            <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">NET HOURS</div>
+            <div style="font-size: 18px; font-weight: 800; color: var(--primary-600); margin-top: 4px;">7H 12M</div>
+          </div>
+
+          <div class="card" style="padding: 14px;">
+            <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">PRODUCTIVE</div>
+            <div style="font-size: 18px; font-weight: 800; color: var(--productive-green); margin-top: 4px;">6H 24M</div>
+          </div>
+
+          <div class="card" style="padding: 14px;">
+            <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">UNPRODUCTIVE</div>
+            <div style="font-size: 18px; font-weight: 800; color: var(--unproductive-red); margin-top: 4px;">18M</div>
+          </div>
+
+          <div class="card" style="padding: 14px;">
+            <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">NEUTRAL</div>
+            <div style="font-size: 18px; font-weight: 800; color: var(--neutral-gray); margin-top: 4px;">30M</div>
+          </div>
+
+          <div class="card" style="padding: 14px;">
+            <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">SCREENSHOTS</div>
+            <div style="font-size: 18px; font-weight: 800; color: var(--primary-600); margin-top: 4px;">18</div>
+          </div>
+        </div>
+
+        <!-- 3. Timeline Strip Preview -->
+        <div class="card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <h2 class="card-title">⏱️ Today's Activity Timeline Preview</h2>
+            <a href="employee-timeline.html" style="font-size: 12px; color: var(--primary-600); font-weight: 600;">Expand Full Day Timeline →</a>
+          </div>
+
+          <div class="timeline-track" style="height: 36px;">
+            <div class="timeline-block block-productive" style="width: 25%;" title="09:00 - 11:00 VS Code"></div>
+            <div class="timeline-block block-idle" style="width: 10%;" title="11:00 - 11:48 Idle"></div>
+            <div class="timeline-block block-productive" style="width: 35%;" title="11:48 - 14:30 Cursor IDE"></div>
+            <div class="timeline-block block-neutral" style="width: 15%;" title="14:30 - 15:45 Slack"></div>
+            <div class="timeline-block block-unproductive" style="width: 15%;" title="15:45 - 17:00 YouTube"></div>
+          </div>
+        </div>
+
+        <!-- 4 & 5. Applications & Websites Two Column Layout -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <!-- Applications Usage Table -->
+          <div class="card" style="padding: 0; overflow: hidden;">
+            <div style="padding: 14px 18px; border-bottom: 1px solid var(--border-color);">
+              <h3 class="card-title">💻 Desktop Applications Used Today</h3>
+            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Application</th>
+                  <th>Category</th>
+                  <th>Duration</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Cursor / VS Code</strong></td>
+                  <td><span class="badge badge-productive">Productive</span></td>
+                  <td>4h 20m</td>
+                </tr>
+                <tr>
+                  <td><strong>Google Chrome</strong></td>
+                  <td><span class="badge badge-neutral">Neutral</span></td>
+                  <td>2h 10m</td>
+                </tr>
+                <tr>
+                  <td><strong>Slack Messenger</strong></td>
+                  <td><span class="badge badge-productive">Productive</span></td>
+                  <td>1h 15m</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Websites Usage Table -->
+          <div class="card" style="padding: 0; overflow: hidden;">
+            <div style="padding: 14px 18px; border-bottom: 1px solid var(--border-color);">
+              <h3 class="card-title">🌐 Web Domains Visited</h3>
+            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Domain</th>
+                  <th>Category</th>
+                  <th>Duration</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>github.com</strong></td>
+                  <td><span class="badge badge-productive">Productive</span></td>
+                  <td>2h 45m</td>
+                </tr>
+                <tr>
+                  <td><strong>stackoverflow.com</strong></td>
+                  <td><span class="badge badge-productive">Productive</span></td>
+                  <td>1h 10m</td>
+                </tr>
+                <tr>
+                  <td><strong>docs.google.com</strong></td>
+                  <td><span class="badge badge-neutral">Neutral</span></td>
+                  <td>45m</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 6. Recent Screenshots Grid -->
+        <div class="card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <h3 class="card-title">📷 Recent Captured Screenshots</h3>
+            <a href="screenshots.html" style="font-size: 12px; color: var(--primary-600); font-weight: 600;">View All Screenshots →</a>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+            <div style="border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; background: #1e293b; padding: 10px; color: white;">
+              <div style="font-size: 11px; font-family: monospace; color: #38bdf8;">Cursor.exe - server.ts</div>
+              <div style="font-size: 10px; color: #94a3b8; margin-top: 4px;">14:22 AM • Active</div>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; background: #1e293b; padding: 10px; color: white;">
+              <div style="font-size: 11px; font-family: monospace; color: #f59e0b;">Chrome.exe - Github Issue</div>
+              <div style="font-size: 10px; color: #94a3b8; margin-top: 4px;">14:05 AM • Captured during idle</div>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; background: #1e293b; padding: 10px; color: white;">
+              <div style="font-size: 11px; font-family: monospace; color: #cbd5e1;">Slack.exe - Blurred</div>
+              <div style="font-size: 10px; color: #94a3b8; margin-top: 4px;">13:45 AM • Blurred by policy</div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="js/static-data.js"></script>
+  <script src="js/tracking-service.js"></script>
+  <script src="js/app-common.js"></script>
+  <script src="js/pages.js"></script>
+</body>
+</html>

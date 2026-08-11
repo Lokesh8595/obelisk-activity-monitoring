@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitoring Settings - Obelisk Activity Monitoring</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="settings">
+  <div class="app-layout" id="appLayout">
+    <!-- Left Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-wrapper">
+          <div class="brand-icon">O</div>
+          <div class="brand-text">
+            <span class="brand-title">OBELISK</span>
+            <span class="brand-subtitle">ERP Monitoring</span>
+          </div>
+        </div>
+        <button class="sidebar-toggle-btn" id="sidebarToggle" title="Toggle Sidebar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <a href="dashboard.html" class="nav-item">
+            <span class="icon">📊</span>
+            <span>Dashboard</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Monitoring</div>
+        <div class="nav-group">
+          <a href="dashboard.html" class="nav-item nav-item-sub">
+            <span>• Overview</span>
+          </a>
+          <a href="employee-timeline.html" class="nav-item nav-item-sub">
+            <span>• Employee Timeline</span>
+          </a>
+          <a href="activity.html" class="nav-item nav-item-sub">
+            <span>• App & Web Activity</span>
+          </a>
+          <a href="screenshots.html" class="nav-item nav-item-sub">
+            <span>• Screenshots</span>
+          </a>
+          <a href="productivity.html" class="nav-item nav-item-sub">
+            <span>• Productivity</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Management</div>
+        <div class="nav-group">
+          <a href="timesheets.html" class="nav-item">
+            <span class="icon">⏱️</span>
+            <span>Timesheets</span>
+          </a>
+          <a href="employee-detail.html" class="nav-item">
+            <span class="icon">👥</span>
+            <span>Employees</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Administration</div>
+        <div class="nav-group">
+          <a href="monitoring-settings.html" class="nav-item active">
+            <span class="icon">⚙️</span>
+            <span>Monitoring Settings</span>
+          </a>
+          <a href="productivity-rules.html" class="nav-item">
+            <span class="icon">🎯</span>
+            <span>Productivity Rules</span>
+          </a>
+          <a href="consent-management.html" class="nav-item">
+            <span class="icon">🛡️</span>
+            <span>Consent Management</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-avatar">AP<span class="status-dot"></span></div>
+        <div class="user-info">
+          <span class="user-name">Akshay Prajapati</span>
+          <span class="user-role">System Admin</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="top-header">
+        <div class="header-left">
+          <h1 class="page-title">Monitoring Policy & Agent Settings</h1>
+          <div class="breadcrumb">
+            <a href="dashboard.html">Home</a>
+            <span>/</span>
+            <span>Administration</span>
+            <span>/</span>
+            <span>Monitoring Settings</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div class="header-date">Mon, Aug 10, 2026</div>
+          <div class="header-sync-status">
+            <span class="pulse-dot"></span>
+            <span>Last synced 5 min ago</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <!-- Save Actions Header -->
+        <div class="page-action-header">
+          <div class="page-headline">
+            <h1>Global Enterprise Monitoring Rules</h1>
+            <p>Configure desktop client parameters, idle thresholds, sync frequencies & screenshot encryption policies.</p>
+          </div>
+          <button class="btn btn-primary" onclick="alert('Monitoring Settings successfully deployed to all 112 active desktop agents!')">💾 Save & Deploy Settings</button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+          <!-- Section 1: General Monitoring Settings -->
+          <div class="card">
+            <h2 class="card-title" style="margin-bottom: 20px;">⚙️ General Monitoring Policy</h2>
+
+            <div class="settings-section">
+              <!-- Setting 1 -->
+              <div class="setting-row">
+                <div class="setting-info">
+                  <span class="setting-title">Monitoring Enabled</span>
+                  <span class="setting-help">Globally enables background client activity tracking across company devices.</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+
+              <!-- Setting 2 -->
+              <div class="setting-row">
+                <div class="setting-info">
+                  <span class="setting-title">Idle Timeout (Minutes)</span>
+                  <span class="setting-help">Inactivity threshold before marking employee state as Idle.</span>
+                </div>
+                <input type="number" class="form-control" value="5" min="1" max="60" style="width: 80px;">
+              </div>
+
+              <!-- Setting 3 -->
+              <div class="setting-row">
+                <div class="setting-info">
+                  <span class="setting-title">Idle Counts As Work</span>
+                  <span class="setting-help">If enabled, idle hours are added into gross paid timesheet hours.</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+
+              <!-- Setting 4 -->
+              <div class="setting-row">
+                <div class="setting-info">
+                  <span class="setting-title">Activity Tracking Enabled</span>
+                  <span class="setting-help">Tracks active window titles, desktop applications and web domain URLs.</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+
+              <!-- Setting 5 -->
+              <div class="setting-row">
+                <div class="setting-info">
+                  <span class="setting-title">Activity Sample Interval (Seconds)</span>
+                  <span class="setting-help">Frequency of sampling active window and domain state on client agent.</span>
+                </div>
+                <input type="number" class="form-control" value="10" min="1" max="60" style="width: 80px;">
+              </div>
+
+              <!-- Setting 6 -->
+              <div class="setting-row">
+                <div class="setting-info">
+                  <span class="setting-title">Sync Interval (Minutes)</span>
+                  <span class="setting-help">Frequency of client batch telemetry upload to Obelisk Cloud server.</span>
+                </div>
+                <input type="number" class="form-control" value="5" min="1" max="60" style="width: 80px;">
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Screenshot Settings -->
+          <div class="card">
+            <h2 class="card-title" style="margin-bottom: 20px;">📷 Screenshot Capture Policy</h2>
+
+            <div class="settings-section">
+              <!-- Setting 1 -->
+              <div class="setting-row">
+                <div class="setting-info">
+                  <span class="setting-title">Screenshots Enabled</span>
+                  <span class="setting-help">Captures periodic automated screen snapshots during active work timers.</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+
+              <!-- Setting 2 -->
+              <div class="setting-row">
+                <div class="setting-info">
+                  <span class="setting-title">Screenshots Per Hour</span>
+                  <span class="setting-help">Target random sample captures performed per hour per employee.</span>
+                </div>
+                <input type="number" class="form-control" value="12" min="1" max="60" style="width: 80px;">
+              </div>
+
+              <!-- Setting 3 -->
+              <div class="setting-row">
+                <div class="setting-info">
+                  <span class="setting-title">Screenshot Quality</span>
+                  <span class="setting-help">Image resolution compression applied before server upload.</span>
+                </div>
+                <select class="form-control" style="width: 140px;">
+                  <option>Low (480p)</option>
+                  <option selected>Medium (720p)</option>
+                  <option>High (1080p)</option>
+                </select>
+              </div>
+
+              <!-- Setting 4 -->
+              <div class="setting-row">
+                <div class="setting-info">
+                  <span class="setting-title">Blur Screenshots</span>
+                  <span class="setting-help">Automatically applies Gaussian blur to protect sensitive employee text and fields.</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+
+              <!-- Setting 5 -->
+              <div class="setting-row">
+                <div class="setting-info">
+                  <span class="setting-title">Retention Days</span>
+                  <span class="setting-help">Automated retention purge period for stored screenshot assets.</span>
+                </div>
+                <input type="number" class="form-control" value="30" min="7" max="365" style="width: 80px;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="js/static-data.js"></script>
+  <script src="js/tracking-service.js"></script>
+  <script src="js/app-common.js"></script>
+  <script src="js/pages.js"></script>
+</body>
+</html>

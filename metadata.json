@@ -1,0 +1,6 @@
+{
+  "name": "Obelisk Activity Monitoring",
+  "description": "Enterprise-level ERP Activity Monitoring and Productivity Web UI built with pure HTML5 and CSS3.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productivity Rules Manager - Obelisk Activity Monitoring</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="rules">
+  <div class="app-layout" id="appLayout">
+    <!-- Left Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-wrapper">
+          <div class="brand-icon">O</div>
+          <div class="brand-text">
+            <span class="brand-title">OBELISK</span>
+            <span class="brand-subtitle">ERP Monitoring</span>
+          </div>
+        </div>
+        <button class="sidebar-toggle-btn" id="sidebarToggle" title="Toggle Sidebar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <a href="dashboard.html" class="nav-item">
+            <span class="icon">📊</span>
+            <span>Dashboard</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Monitoring</div>
+        <div class="nav-group">
+          <a href="dashboard.html" class="nav-item nav-item-sub">
+            <span>• Overview</span>
+          </a>
+          <a href="employee-timeline.html" class="nav-item nav-item-sub">
+            <span>• Employee Timeline</span>
+          </a>
+          <a href="activity.html" class="nav-item nav-item-sub">
+            <span>• App & Web Activity</span>
+          </a>
+          <a href="screenshots.html" class="nav-item nav-item-sub">
+            <span>• Screenshots</span>
+          </a>
+          <a href="productivity.html" class="nav-item nav-item-sub">
+            <span>• Productivity</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Management</div>
+        <div class="nav-group">
+          <a href="timesheets.html" class="nav-item">
+            <span class="icon">⏱️</span>
+            <span>Timesheets</span>
+          </a>
+          <a href="employee-detail.html" class="nav-item">
+            <span class="icon">👥</span>
+            <span>Employees</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Administration</div>
+        <div class="nav-group">
+          <a href="monitoring-settings.html" class="nav-item">
+            <span class="icon">⚙️</span>
+            <span>Monitoring Settings</span>
+          </a>
+          <a href="productivity-rules.html" class="nav-item active">
+            <span class="icon">🎯</span>
+            <span>Productivity Rules</span>
+          </a>
+          <a href="consent-management.html" class="nav-item">
+            <span class="icon">🛡️</span>
+            <span>Consent Management</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-avatar">AP<span class="status-dot"></span></div>
+        <div class="user-info">
+          <span class="user-name">Akshay Prajapati</span>
+          <span class="user-role">System Admin</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="top-header">
+        <div class="header-left">
+          <h1 class="page-title">Productivity Categorization Rules</h1>
+          <div class="breadcrumb">
+            <a href="dashboard.html">Home</a>
+            <span>/</span>
+            <span>Administration</span>
+            <span>/</span>
+            <span>Productivity Rules</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div class="header-date">Mon, Aug 10, 2026</div>
+          <div class="header-sync-status">
+            <span class="pulse-dot"></span>
+            <span>Last synced 5 min ago</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <!-- Warning Banner -->
+        <div class="warning-banner">
+          <span>⚠️</span>
+          <span><strong>Notice:</strong> Changing categorization rules will automatically re-classify historical activity logs and update overall productivity scores across teams.</span>
+        </div>
+
+        <!-- Global Classification Defaults Bar -->
+        <div class="filter-bar">
+          <div class="filter-group">
+            <span class="filter-label">Default Fallback Category:</span>
+            <select class="form-control" style="font-weight: 600;">
+              <option>Neutral (Recommended)</option>
+              <option>Unproductive</option>
+              <option>Productive</option>
+            </select>
+          </div>
+
+          <button class="btn btn-primary btn-sm" style="margin-left: auto;" onclick="openAddRuleModal()">➕ Add Custom Rule</button>
+        </div>
+
+        <!-- Rules Grid -->
+        <div class="rules-container">
+          <!-- Column 1: Productive Applications -->
+          <div class="card">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
+              <h2 class="card-title" style="color: var(--productive-green);">💻 Productive Applications</h2>
+              <span class="badge badge-productive">5 Rules</span>
+            </div>
+
+            <div class="rules-list" id="prodAppList">
+              <div class="rule-item">
+                <span class="rule-value">code.exe (VS Code)</span>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                  <span class="badge badge-productive">Productive</span>
+                  <button class="btn btn-secondary btn-sm" onclick="this.closest('.rule-item').remove()">✕</button>
+                </div>
+              </div>
+
+              <div class="rule-item">
+                <span class="rule-value">cursor.exe (Cursor IDE)</span>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                  <span class="badge badge-productive">Productive</span>
+                  <button class="btn btn-secondary btn-sm" onclick="this.closest('.rule-item').remove()">✕</button>
+                </div>
+              </div>
+
+              <div class="rule-item">
+                <span class="rule-value">slack.exe (Slack)</span>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                  <span class="badge badge-productive">Productive</span>
+                  <button class="btn btn-secondary btn-sm" onclick="this.closest('.rule-item').remove()">✕</button>
+                </div>
+              </div>
+
+              <div class="rule-item">
+                <span class="rule-value">teams.exe (Microsoft Teams)</span>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                  <span class="badge badge-productive">Productive</span>
+                  <button class="btn btn-secondary btn-sm" onclick="this.closest('.rule-item').remove()">✕</button>
+                </div>
+              </div>
+
+              <div class="rule-item">
+                <span class="rule-value">figma.exe (Figma Desktop)</span>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                  <span class="badge badge-productive">Productive</span>
+                  <button class="btn btn-secondary btn-sm" onclick="this.closest('.rule-item').remove()">✕</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2: Unproductive Applications -->
+          <div class="card">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
+              <h2 class="card-title" style="color: var(--unproductive-red);">🎮 Unproductive Applications</h2>
+              <span class="badge badge-unproductive">3 Rules</span>
+            </div>
+
+            <div class="rules-list">
+              <div class="rule-item">
+                <span class="rule-value">steam.exe (Steam Games)</span>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                  <span class="badge badge-unproductive">Unproductive</span>
+                  <button class="btn btn-secondary btn-sm" onclick="this.closest('.rule-item').remove()">✕</button>
+                </div>
+              </div>
+
+              <div class="rule-item">
+                <span class="rule-value">discord.exe (Discord Chat)</span>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                  <span class="badge badge-unproductive">Unproductive</span>
+                  <button class="btn btn-secondary btn-sm" onclick="this.closest('.rule-item').remove()">✕</button>
+                </div>
+              </div>
+
+              <div class="rule-item">
+                <span class="rule-value">spotify.exe (Music Player)</span>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                  <span class="badge badge-neutral">Neutral</span>
+                  <button class="btn btn-secondary btn-sm" onclick="this.closest('.rule-item').remove()">✕</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 3: Productive Web Domains -->
+          <div class="card">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
+              <h2 class="card-title" style="color: var(--productive-green);">🌐 Productive Web Domains</h2>
+              <span class="badge badge-productive">4 Rules</span>
+            </div>
+
+            <div class="rules-list">
+              <div class="rule-item">
+                <span class="rule-value">github.com</span>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                  <span class="badge badge-productive">Productive</span>
+                  <button class="btn btn-secondary btn-sm" onclick="this.closest('.rule-item').remove()">✕</button>
+                </div>
+              </div>
+
+              <div class="rule-item">
+                <span class="rule-value">atlassian.net (Jira/Confluence)</span>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                  <span class="badge badge-productive">Productive</span>
+                  <button class="btn btn-secondary btn-sm" onclick="this.closest('.rule-item').remove()">✕</button>
+                </div>
+              </div>
+
+              <div class="rule-item">
+                <span class="rule-value">stackoverflow.com</span>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                  <span class="badge badge-productive">Productive</span>
+                  <button class="btn btn-secondary btn-sm" onclick="this.closest('.rule-item').remove()">✕</button>
+                </div>
+              </div>
+
+              <div class="rule-item">
+                <span class="rule-value">linear.app</span>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                  <span class="badge badge-productive">Productive</span>
+                  <button class="btn btn-secondary btn-sm" onclick="this.closest('.rule-item').remove()">✕</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 4: Unproductive Web Domains -->
+          <div class="card">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
+              <h2 class="card-title" style="color: var(--unproductive-red);">🚫 Unproductive Web Domains</h2>
+              <span class="badge badge-unproductive">4 Rules</span>
+            </div>
+
+            <div class="rules-list">
+              <div class="rule-item">
+                <span class="rule-value">youtube.com</span>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                  <span class="badge badge-unproductive">Unproductive</span>
+                  <button class="btn btn-secondary btn-sm" onclick="this.closest('.rule-item').remove()">✕</button>
+                </div>
+              </div>
+
+              <div class="rule-item">
+                <span class="rule-value">facebook.com</span>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                  <span class="badge badge-unproductive">Unproductive</span>
+                  <button class="btn btn-secondary btn-sm" onclick="this.closest('.rule-item').remove()">✕</button>
+                </div>
+              </div>
+
+              <div class="rule-item">
+                <span class="rule-value">twitter.com / x.com</span>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                  <span class="badge badge-unproductive">Unproductive</span>
+                  <button class="btn btn-secondary btn-sm" onclick="this.closest('.rule-item').remove()">✕</button>
+                </div>
+              </div>
+
+              <div class="rule-item">
+                <span class="rule-value">reddit.com</span>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                  <span class="badge badge-unproductive">Unproductive</span>
+                  <button class="btn btn-secondary btn-sm" onclick="this.closest('.rule-item').remove()">✕</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Add Rule Modal UI -->
+  <div class="modal-overlay" id="ruleModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <span class="modal-title">Add Productivity Rule</span>
+        <button class="modal-close-btn" onclick="closeRuleModal()">✕</button>
+      </div>
+
+      <div class="modal-body" style="display: flex; flex-direction: column; gap: 16px;">
+        <div>
+          <label style="font-weight: 600; font-size: 12px;">Rule Target Type:</label>
+          <select class="form-control" style="width: 100%; margin-top: 4px;">
+            <option>Application Name (e.g. cursor.exe)</option>
+            <option>Web Domain (e.g. github.com)</option>
+          </select>
+        </div>
+
+        <div>
+          <label style="font-weight: 600; font-size: 12px;">Value / Process Name:</label>
+          <input type="text" class="form-control" id="newRuleVal" placeholder="e.g. visualstudio.exe or notion.so" style="width: 100%; margin-top: 4px;">
+        </div>
+
+        <div>
+          <label style="font-weight: 600; font-size: 12px;">Category Classification:</label>
+          <select class="form-control" id="newRuleCat" style="width: 100%; margin-top: 4px;">
+            <option value="Productive">Productive</option>
+            <option value="Neutral">Neutral</option>
+            <option value="Unproductive">Unproductive</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeRuleModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveNewRule()">Save Rule</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/static-data.js"></script>
+  <script src="js/tracking-service.js"></script>
+  <script src="js/app-common.js"></script>
+  <script src="js/pages.js"></script>
+  <script>
+    function openAddRuleModal() {
+      document.getElementById('ruleModal').classList.add('active');
+    }
+    function closeRuleModal() {
+      document.getElementById('ruleModal').classList.remove('active');
+    }
+    function saveNewRule() {
+      const val = document.getElementById('newRuleVal').value;
+      const cat = document.getElementById('newRuleCat').value;
+      if (!val) { alert('Please enter process name or domain!'); return; }
+
+      const list = document.getElementById('prodAppList');
+      const item = document.createElement('div');
+      item.className = 'rule-item';
+      item.innerHTML = `<span class="rule-value">${val}</span>
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <span class="badge badge-${cat.toLowerCase()}">${cat}</span>
+          <button class="btn btn-secondary btn-sm" onclick="this.closest('.rule-item').remove()">✕</button>
+        </div>`;
+      list.prepend(item);
+
+      closeRuleModal();
+      document.getElementById('newRuleVal').value = '';
+    }
+  </script>
+</body>
+</html>

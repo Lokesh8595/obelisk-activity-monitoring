@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timesheet Idle View - Obelisk Activity Monitoring</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="timesheets">
+  <div class="app-layout" id="appLayout">
+    <!-- Left Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-wrapper">
+          <div class="brand-icon">O</div>
+          <div class="brand-text">
+            <span class="brand-title">OBELISK</span>
+            <span class="brand-subtitle">ERP Monitoring</span>
+          </div>
+        </div>
+        <button class="sidebar-toggle-btn" id="sidebarToggle" title="Toggle Sidebar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <a href="dashboard.html" class="nav-item">
+            <span class="icon">📊</span>
+            <span>Dashboard</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Monitoring</div>
+        <div class="nav-group">
+          <a href="dashboard.html" class="nav-item nav-item-sub">
+            <span>• Overview</span>
+          </a>
+          <a href="employee-timeline.html" class="nav-item nav-item-sub">
+            <span>• Employee Timeline</span>
+          </a>
+          <a href="activity.html" class="nav-item nav-item-sub">
+            <span>• App & Web Activity</span>
+          </a>
+          <a href="screenshots.html" class="nav-item nav-item-sub">
+            <span>• Screenshots</span>
+          </a>
+          <a href="productivity.html" class="nav-item nav-item-sub">
+            <span>• Productivity</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Management</div>
+        <div class="nav-group">
+          <a href="timesheets.html" class="nav-item active">
+            <span class="icon">⏱️</span>
+            <span>Timesheets</span>
+          </a>
+          <a href="employee-detail.html" class="nav-item">
+            <span class="icon">👥</span>
+            <span>Employees</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Administration</div>
+        <div class="nav-group">
+          <a href="monitoring-settings.html" class="nav-item">
+            <span class="icon">⚙️</span>
+            <span>Monitoring Settings</span>
+          </a>
+          <a href="productivity-rules.html" class="nav-item">
+            <span class="icon">🎯</span>
+            <span>Productivity Rules</span>
+          </a>
+          <a href="consent-management.html" class="nav-item">
+            <span class="icon">🛡️</span>
+            <span>Consent Management</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-avatar">AP<span class="status-dot"></span></div>
+        <div class="user-info">
+          <span class="user-name">Akshay Prajapati</span>
+          <span class="user-role">System Admin</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="top-header">
+        <div class="header-left">
+          <h1 class="page-title">Timesheet Idle & Net Hours Reconciliation</h1>
+          <div class="breadcrumb">
+            <a href="dashboard.html">Home</a>
+            <span>/</span>
+            <span>Management</span>
+            <span>/</span>
+            <span>Timesheets</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div class="header-date">Mon, Aug 10, 2026</div>
+          <div class="header-sync-status">
+            <span class="pulse-dot"></span>
+            <span>Last synced 5 min ago</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+          <div class="filter-group">
+            <span class="filter-label">Employee:</span>
+            <select class="form-control">
+              <option value="">All Employees</option>
+              <option selected>Akshay Prajapati</option>
+              <option>Sarah Chen</option>
+              <option>Marcus Vance</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label">Project:</span>
+            <select class="form-control">
+              <option value="">All Projects</option>
+              <option selected>Obelisk ERP</option>
+              <option>Mobile Redesign</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label">Date Range:</span>
+            <input type="date" class="form-control" value="2026-08-10">
+          </div>
+
+          <button class="btn btn-primary btn-sm" style="margin-left: auto;" onclick="alert('Timesheet Approved & Synced with ERP Payroll')">✅ Approve Timesheets</button>
+        </div>
+
+        <!-- Timesheet Calculation Formula Banner -->
+        <div class="card" style="background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 1px solid #fed7aa; color: var(--text-main);">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+            <div>
+              <h2 style="font-size: 16px; font-weight: 700; color: var(--text-main);">Timesheet Calculation Formula</h2>
+              <p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">
+                <strong>Net Hours = Gross Hours - Idle Hours</strong> (Unless "Idle Counts as Work" policy is enabled in settings).
+              </p>
+            </div>
+            <div style="display: flex; gap: 20px;">
+              <div style="text-align: center;">
+                <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Total Gross</div>
+                <div style="font-size: 20px; font-weight: 800; color: var(--primary-600);">80H 00M</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Total Idle</div>
+                <div style="font-size: 20px; font-weight: 800; color: var(--idle-amber);">9H 15M</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Total Net Work</div>
+                <div style="font-size: 20px; font-weight: 800; color: var(--productive-green);">70H 45M</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timesheets Table -->
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <div class="table-responsive" style="border: none;">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Employee</th>
+                  <th>Date</th>
+                  <th>Project</th>
+                  <th>Task Description</th>
+                  <th>Gross Hours</th>
+                  <th>Idle Hours</th>
+                  <th>Net Hours</th>
+                  <th>Status</th>
+                  <th style="text-align: right;">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="emp-cell">
+                      <div class="emp-avatar">AP</div>
+                      <span class="emp-name">Akshay Prajapati</span>
+                    </div>
+                  </td>
+                  <td>2026-08-10</td>
+                  <td>Obelisk ERP</td>
+                  <td>Backend API & Monitoring Service</td>
+                  <td><span class="hours-pill">8H 00M</span></td>
+                  <td><span class="hours-pill" style="color: var(--idle-amber);">1H 15M</span></td>
+                  <td><span class="hours-pill" style="color: var(--productive-green);">6H 45M</span></td>
+                  <td><span class="badge badge-active">Approved</span></td>
+                  <td style="text-align: right;">
+                    <a href="employee-timeline.html" class="btn btn-secondary btn-sm">Verify Timeline</a>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="emp-cell">
+                      <div class="emp-avatar" style="background: #fce7f3; color: #be185d;">SC</div>
+                      <span class="emp-name">Sarah Chen</span>
+                    </div>
+                  </td>
+                  <td>2026-08-10</td>
+                  <td>Mobile Redesign</td>
+                  <td>Figma UI Design System Specs</td>
+                  <td><span class="hours-pill">8H 00M</span></td>
+                  <td><span class="hours-pill" style="color: var(--idle-amber);">0H 25M</span></td>
+                  <td><span class="hours-pill" style="color: var(--productive-green);">7H 35M</span></td>
+                  <td><span class="badge badge-active">Approved</span></td>
+                  <td style="text-align: right;">
+                    <a href="employee-timeline.html" class="btn btn-secondary btn-sm">Verify Timeline</a>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="emp-cell">
+                      <div class="emp-avatar" style="background: #fef3c7; color: #b45309;">MV</div>
+                      <span class="emp-name">Marcus Vance</span>
+                    </div>
+                  </td>
+                  <td>2026-08-10</td>
+                  <td>Cloud Migration</td>
+                  <td>Kubernetes Cluster Setup</td>
+                  <td><span class="hours-pill">8H 00M</span></td>
+                  <td><span class="hours-pill" style="color: var(--unproductive-red);">2H 10M</span></td>
+                  <td><span class="hours-pill" style="color: var(--productive-green);">5H 50M</span></td>
+                  <td><span class="badge badge-pending">Under Review</span></td>
+                  <td style="text-align: right;">
+                    <a href="employee-timeline.html" class="btn btn-secondary btn-sm">Verify Timeline</a>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="emp-cell">
+                      <div class="emp-avatar" style="background: #e0e7ff; color: #4338ca;">ER</div>
+                      <span class="emp-name">Elena Rostova</span>
+                    </div>
+                  </td>
+                  <td>2026-08-10</td>
+                  <td>Obelisk ERP</td>
+                  <td>E2E Automation Testing Suite</td>
+                  <td><span class="hours-pill">8H 00M</span></td>
+                  <td><span class="hours-pill" style="color: var(--idle-amber);">0H 40M</span></td>
+                  <td><span class="hours-pill" style="color: var(--productive-green);">7H 20M</span></td>
+                  <td><span class="badge badge-active">Approved</span></td>
+                  <td style="text-align: right;">
+                    <a href="employee-timeline.html" class="btn btn-secondary btn-sm">Verify Timeline</a>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="emp-cell">
+                      <div class="emp-avatar" style="background: #fae8ff; color: #86198f;">PS</div>
+                      <span class="emp-name">Priya Sharma</span>
+                    </div>
+                  </td>
+                  <td>2026-08-10</td>
+                  <td>Obelisk ERP</td>
+                  <td>Database Optimization & Indexing</td>
+                  <td><span class="hours-pill">8H 00M</span></td>
+                  <td><span class="hours-pill" style="color: var(--idle-amber);">0H 15M</span></td>
+                  <td><span class="hours-pill" style="color: var(--productive-green);">7H 45M</span></td>
+                  <td><span class="badge badge-active">Approved</span></td>
+                  <td style="text-align: right;">
+                    <a href="employee-timeline.html" class="btn btn-secondary btn-sm">Verify Timeline</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="js/static-data.js"></script>
+  <script src="js/tracking-service.js"></script>
+  <script src="js/app-common.js"></script>
+  <script src="js/pages.js"></script>
+</body>
+</html>

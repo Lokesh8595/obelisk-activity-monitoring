@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productivity Dashboard - Obelisk Activity Monitoring</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="productivity">
+  <div class="app-layout" id="appLayout">
+    <!-- Left Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-wrapper">
+          <div class="brand-icon">O</div>
+          <div class="brand-text">
+            <span class="brand-title">OBELISK</span>
+            <span class="brand-subtitle">ERP Monitoring</span>
+          </div>
+        </div>
+        <button class="sidebar-toggle-btn" id="sidebarToggle" title="Toggle Sidebar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <a href="dashboard.html" class="nav-item">
+            <span class="icon">📊</span>
+            <span>Dashboard</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Monitoring</div>
+        <div class="nav-group">
+          <a href="dashboard.html" class="nav-item nav-item-sub">
+            <span>• Overview</span>
+          </a>
+          <a href="employee-timeline.html" class="nav-item nav-item-sub">
+            <span>• Employee Timeline</span>
+          </a>
+          <a href="activity.html" class="nav-item nav-item-sub">
+            <span>• App & Web Activity</span>
+          </a>
+          <a href="screenshots.html" class="nav-item nav-item-sub">
+            <span>• Screenshots</span>
+          </a>
+          <a href="productivity.html" class="nav-item nav-item-sub active">
+            <span>• Productivity</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Management</div>
+        <div class="nav-group">
+          <a href="timesheets.html" class="nav-item">
+            <span class="icon">⏱️</span>
+            <span>Timesheets</span>
+          </a>
+          <a href="employee-detail.html" class="nav-item">
+            <span class="icon">👥</span>
+            <span>Employees</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Administration</div>
+        <div class="nav-group">
+          <a href="monitoring-settings.html" class="nav-item">
+            <span class="icon">⚙️</span>
+            <span>Monitoring Settings</span>
+          </a>
+          <a href="productivity-rules.html" class="nav-item">
+            <span class="icon">🎯</span>
+            <span>Productivity Rules</span>
+          </a>
+          <a href="consent-management.html" class="nav-item">
+            <span class="icon">🛡️</span>
+            <span>Consent Management</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-avatar">AP<span class="status-dot"></span></div>
+        <div class="user-info">
+          <span class="user-name">Akshay Prajapati</span>
+          <span class="user-role">System Admin</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="top-header">
+        <div class="header-left">
+          <h1 class="page-title">Productivity Intelligence</h1>
+          <div class="breadcrumb">
+            <a href="dashboard.html">Home</a>
+            <span>/</span>
+            <span>Activity Monitoring</span>
+            <span>/</span>
+            <span>Productivity</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div class="header-date">Mon, Aug 10, 2026</div>
+          <div class="header-sync-status">
+            <span class="pulse-dot"></span>
+            <span>Last synced 5 min ago</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <!-- Top Controls -->
+        <div class="filter-bar">
+          <div class="filter-group">
+            <span class="filter-label">Team:</span>
+            <select class="form-control">
+              <option value="">All Organization</option>
+              <option selected>Core Engineering</option>
+              <option>Product & UI/UX</option>
+              <option>Quality Assurance</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label">Date Range:</span>
+            <select class="form-control">
+              <option selected>This Week (Aug 04 - Aug 10)</option>
+              <option>Last Week</option>
+              <option>This Month</option>
+            </select>
+          </div>
+
+          <button class="btn btn-primary btn-sm" style="margin-left: auto;">📊 Generate Executive Brief</button>
+        </div>
+
+        <!-- Score Ring & Breakdown Grid -->
+        <div style="display: grid; grid-template-columns: 320px 1fr; gap: 20px;">
+          <!-- Main Productivity Score Ring Card -->
+          <div class="card" style="text-align: center; display: flex; flex-direction: column; justify-content: center;">
+            <h3 class="card-title" style="justify-content: center; margin-bottom: 20px;">Overall Productivity Score</h3>
+            
+            <div class="productivity-score-ring">
+              <div class="score-inner-circle">
+                <span class="score-number">82%</span>
+                <span class="score-label">Score</span>
+              </div>
+            </div>
+
+            <div class="formula-box">
+              Formula:<br>
+              <strong>Productive / (Productive + Unproductive + Neutral)</strong>
+            </div>
+            <p style="font-size: 11px; color: var(--text-muted); margin-top: 10px;">
+              Target threshold: &gt; 75%
+            </p>
+          </div>
+
+          <!-- Breakdown Cards Grid -->
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+              <div class="card" style="border-left: 4px solid var(--productive-green);">
+                <div style="font-size: 11px; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Productive</div>
+                <div style="font-size: 24px; font-weight: 800; color: var(--productive-green); margin: 4px 0;">684.5h</div>
+                <span class="badge badge-productive">84% of active</span>
+              </div>
+
+              <div class="card" style="border-left: 4px solid var(--unproductive-red);">
+                <div style="font-size: 11px; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Unproductive</div>
+                <div style="font-size: 24px; font-weight: 800; color: var(--unproductive-red); margin: 4px 0;">42.1h</div>
+                <span class="badge badge-unproductive">5% of active</span>
+              </div>
+
+              <div class="card" style="border-left: 4px solid var(--neutral-gray);">
+                <div style="font-size: 11px; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Neutral</div>
+                <div style="font-size: 24px; font-weight: 800; color: var(--neutral-gray); margin: 4px 0;">88.2h</div>
+                <span class="badge badge-neutral">11% of active</span>
+              </div>
+
+              <div class="card" style="border-left: 4px solid var(--idle-amber);">
+                <div style="font-size: 11px; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Idle Duration</div>
+                <div style="font-size: 24px; font-weight: 800; color: var(--idle-amber); margin: 4px 0;">92.0h</div>
+                <span class="badge badge-idle">12% away</span>
+              </div>
+            </div>
+
+            <!-- CSS Bar Chart: Daily Productivity Trend -->
+            <div class="card">
+              <h3 class="card-title">📅 Daily Productivity Trend (Mon - Fri)</h3>
+              <div class="chart-bar-container">
+                <div class="chart-bar-col">
+                  <div class="chart-bar-fill" style="height: 78%; background-color: var(--productive-green);" title="Monday: 78%"></div>
+                  <span class="chart-bar-label">Mon</span>
+                </div>
+                <div class="chart-bar-col">
+                  <div class="chart-bar-fill" style="height: 85%; background-color: var(--productive-green);" title="Tuesday: 85%"></div>
+                  <span class="chart-bar-label">Tue</span>
+                </div>
+                <div class="chart-bar-col">
+                  <div class="chart-bar-fill" style="height: 82%; background-color: var(--productive-green);" title="Wednesday: 82%"></div>
+                  <span class="chart-bar-label">Wed</span>
+                </div>
+                <div class="chart-bar-col">
+                  <div class="chart-bar-fill" style="height: 88%; background-color: var(--productive-green);" title="Thursday: 88%"></div>
+                  <span class="chart-bar-label">Thu</span>
+                </div>
+                <div class="chart-bar-col">
+                  <div class="chart-bar-fill" style="height: 79%; background-color: var(--productive-green);" title="Friday: 79%"></div>
+                  <span class="chart-bar-label">Fri</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Comparison & Stacked Activity Charts -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <!-- Team Comparison Bar Chart -->
+          <div class="card">
+            <h3 class="card-title">👥 Team Productivity Comparison</h3>
+            <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 16px;">
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; margin-bottom: 4px;">
+                  <span>Core Engineering</span>
+                  <span style="color: var(--productive-green);">88%</span>
+                </div>
+                <div class="progress-bar-container">
+                  <div class="progress-bar-fill progress-high" style="width: 88%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; margin-bottom: 4px;">
+                  <span>Product & UI/UX</span>
+                  <span style="color: var(--productive-green);">92%</span>
+                </div>
+                <div class="progress-bar-container">
+                  <div class="progress-bar-fill progress-high" style="width: 92%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; margin-bottom: 4px;">
+                  <span>Quality Assurance</span>
+                  <span style="color: var(--productive-green);">85%</span>
+                </div>
+                <div class="progress-bar-container">
+                  <div class="progress-bar-fill progress-high" style="width: 85%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; margin-bottom: 4px;">
+                  <span>Digital Marketing</span>
+                  <span style="color: var(--idle-amber);">68%</span>
+                </div>
+                <div class="progress-bar-container">
+                  <div class="progress-bar-fill progress-medium" style="width: 68%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Productive vs Unproductive Stacked Bar -->
+          <div class="card">
+            <h3 class="card-title">⚖️ Weekly Productive vs Unproductive Ratio</h3>
+            <div style="margin-top: 20px;">
+              <div style="display: flex; height: 32px; border-radius: 8px; overflow: hidden; font-size: 11px; color: white; font-weight: 700; text-align: center; line-height: 32px;">
+                <div style="width: 84%; background: var(--productive-green);" title="Productive 84%">84% Productive</div>
+                <div style="width: 11%; background: var(--neutral-gray);" title="Neutral 11%">11%</div>
+                <div style="width: 5%; background: var(--unproductive-red);" title="Unproductive 5%">5%</div>
+              </div>
+
+              <div style="display: flex; justify-content: space-around; margin-top: 24px; font-size: 12px; color: var(--text-muted);">
+                <div style="text-align: center;">
+                  <div style="font-weight: 700; font-size: 16px; color: var(--text-main);">684.5 Hours</div>
+                  <span>Total Productive Work</span>
+                </div>
+                <div style="text-align: center;">
+                  <div style="font-weight: 700; font-size: 16px; color: var(--text-main);">42.1 Hours</div>
+                  <span>Total Non-Work / Social</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="js/static-data.js"></script>
+  <script src="js/tracking-service.js"></script>
+  <script src="js/app-common.js"></script>
+  <script src="js/pages.js"></script>
+</body>
+</html>

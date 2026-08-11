@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Obelisk Activity Monitoring</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-layout" id="appLayout">
+    <!-- Left Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-wrapper">
+          <div class="brand-icon">O</div>
+          <div class="brand-text">
+            <span class="brand-title">OBELISK</span>
+            <span class="brand-subtitle">ERP Monitoring</span>
+          </div>
+        </div>
+        <button class="sidebar-toggle-btn" id="sidebarToggle" title="Toggle Sidebar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <a href="dashboard.html" class="nav-item active">
+            <span class="icon">📊</span>
+            <span>Dashboard</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Monitoring</div>
+        <div class="nav-group">
+          <a href="dashboard.html" class="nav-item nav-item-sub active">
+            <span>• Overview</span>
+          </a>
+          <a href="employee-timeline.html" class="nav-item nav-item-sub">
+            <span>• Employee Timeline</span>
+          </a>
+          <a href="activity.html" class="nav-item nav-item-sub">
+            <span>• App & Web Activity</span>
+          </a>
+          <a href="screenshots.html" class="nav-item nav-item-sub">
+            <span>• Screenshots</span>
+          </a>
+          <a href="productivity.html" class="nav-item nav-item-sub">
+            <span>• Productivity</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Management</div>
+        <div class="nav-group">
+          <a href="timesheets.html" class="nav-item">
+            <span class="icon">⏱️</span>
+            <span>Timesheets</span>
+          </a>
+          <a href="employee-detail.html" class="nav-item">
+            <span class="icon">👥</span>
+            <span>Employees</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Administration</div>
+        <div class="nav-group">
+          <a href="monitoring-settings.html" class="nav-item">
+            <span class="icon">⚙️</span>
+            <span>Monitoring Settings</span>
+          </a>
+          <a href="productivity-rules.html" class="nav-item">
+            <span class="icon">🎯</span>
+            <span>Productivity Rules</span>
+          </a>
+          <a href="consent-management.html" class="nav-item">
+            <span class="icon">🛡️</span>
+            <span>Consent Management</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-avatar">AP<span class="status-dot"></span></div>
+        <div class="user-info">
+          <span class="user-name">Akshay Prajapati</span>
+          <span class="user-role">System Admin</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="top-header">
+        <div class="header-left">
+          <h1 class="page-title">Activity Monitoring Overview</h1>
+          <div class="breadcrumb">
+            <a href="dashboard.html">Home</a>
+            <span>/</span>
+            <span>Dashboard</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Search employee, project...">
+          </div>
+
+          <div class="entity-selector">
+            <select>
+              <option>Obelisk Global (HQ)</option>
+              <option>Engineering Team</option>
+              <option>Product & Design</option>
+            </select>
+          </div>
+
+          <button class="header-icon-btn" title="Notifications">
+            🔔
+            <span class="notification-badge"></span>
+          </button>
+
+          <div class="header-date">Mon, Aug 10, 2026</div>
+
+          <div class="header-sync-status">
+            <span class="pulse-dot"></span>
+            <span>Live Sync Active</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <!-- Section 1: Summary Metric Cards (7 Metric Blocks) -->
+        <section class="summary-grid">
+          <div class="summary-card">
+            <div class="summary-card-header">
+              <div class="summary-card-icon icon-blue">👥</div>
+              <span class="badge badge-active">112 Active</span>
+            </div>
+            <div>
+              <div class="summary-value">128</div>
+              <div class="summary-label">Total Monitored Employees</div>
+            </div>
+            <div class="summary-meta trend-up">
+              <span>↑ 4 new onboarded</span>
+            </div>
+          </div>
+
+          <div class="summary-card">
+            <div class="summary-card-header">
+              <div class="summary-card-icon icon-green">⚡</div>
+              <span class="badge badge-productive">Active Now</span>
+            </div>
+            <div>
+              <div class="summary-value">94</div>
+              <div class="summary-label">Currently Working</div>
+            </div>
+            <div class="summary-meta trend-up">
+              <span>73.4% workforce online</span>
+            </div>
+          </div>
+
+          <div class="summary-card">
+            <div class="summary-card-header">
+              <div class="summary-card-icon icon-amber">⏳</div>
+              <span class="badge badge-idle">Idle State</span>
+            </div>
+            <div>
+              <div class="summary-value">18</div>
+              <div class="summary-label">Currently Idle</div>
+            </div>
+            <div class="summary-meta trend-down">
+              <span>Inactivity &gt; 5 min</span>
+            </div>
+          </div>
+
+          <div class="summary-card">
+            <div class="summary-card-header">
+              <div class="summary-card-icon icon-gray">🌙</div>
+              <span class="badge badge-offline">Offline</span>
+            </div>
+            <div>
+              <div class="summary-value">16</div>
+              <div class="summary-label">Offline / Clocked Out</div>
+            </div>
+            <div class="summary-meta">
+              <span>Next shift at 16:00</span>
+            </div>
+          </div>
+
+          <div class="summary-card">
+            <div class="summary-card-header">
+              <div class="summary-card-icon icon-green">🎯</div>
+              <span class="badge badge-productive">82.4% Score</span>
+            </div>
+            <div>
+              <div class="summary-value">6H 42M</div>
+              <div class="summary-label">Avg Productive Time</div>
+            </div>
+            <div class="summary-meta trend-up">
+              <span>↑ +4.2% vs last week</span>
+            </div>
+          </div>
+
+          <div class="summary-card">
+            <div class="summary-card-header">
+              <div class="summary-card-icon icon-amber">💤</div>
+              <span class="badge badge-warning">11.8% Time</span>
+            </div>
+            <div>
+              <div class="summary-value">58M</div>
+              <div class="summary-label">Avg Idle Time / Day</div>
+            </div>
+            <div class="summary-meta trend-up">
+              <span>↓ -8 min vs benchmark</span>
+            </div>
+          </div>
+
+          <div class="summary-card">
+            <div class="summary-card-header">
+              <div class="summary-card-icon icon-red">🚫</div>
+              <span class="badge badge-unproductive">5.8% Time</span>
+            </div>
+            <div>
+              <div class="summary-value">28M</div>
+              <div class="summary-label">Avg Unproductive Time</div>
+            </div>
+            <div class="summary-meta trend-down">
+              <span>Mainly social media & games</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 2: Real-time Employee Activity Table -->
+        <section class="card" style="padding: 0; overflow: hidden;">
+          <div class="card-header" style="padding: 16px 20px; margin-bottom: 0;">
+            <div>
+              <h2 class="card-title">Real-Time Employee Activity & Monitoring Status</h2>
+              <p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">
+                Live feed of active processes, web domains, productivity scores, and screenshot sync times.
+              </p>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <button class="btn btn-secondary btn-sm" onclick="location.reload()">🔄 Refresh Feed</button>
+              <a href="screenshots.html" class="btn btn-primary btn-sm">📷 View Screenshots</a>
+            </div>
+          </div>
+
+          <div class="table-responsive" style="border: none;">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Employee</th>
+                  <th>Department</th>
+                  <th>Current App / Website</th>
+                  <th>Monitoring Status</th>
+                  <th>Today Net Hours</th>
+                  <th>Productivity Score</th>
+                  <th>Last Sync</th>
+                  <th style="text-align: right;">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="emp-cell">
+                      <div class="emp-avatar">AP</div>
+                      <div class="emp-details">
+                        <span class="emp-name">Akshay Prajapati</span>
+                        <span class="emp-email">akshay@obelisk.io</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Core Engineering</td>
+                  <td>
+                    <div style="font-weight: 600;">Cursor.exe</div>
+                    <div style="font-size: 11px; color: var(--text-muted);">github.com/obelisk/backend</div>
+                  </td>
+                  <td><span class="badge badge-active">Active</span></td>
+                  <td><span class="hours-pill">6H 45M</span></td>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <div class="progress-bar-container" style="width: 80px;">
+                        <div class="progress-bar-fill progress-high" style="width: 92%;"></div>
+                      </div>
+                      <span style="font-weight: 700; color: var(--productive-green);">92%</span>
+                    </div>
+                  </td>
+                  <td>2 min ago</td>
+                  <td style="text-align: right;">
+                    <a href="employee-detail.html" class="btn btn-secondary btn-sm">View Profile</a>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="emp-cell">
+                      <div class="emp-avatar" style="background: #fce7f3; color: #be185d;">SC</div>
+                      <div class="emp-details">
+                        <span class="emp-name">Sarah Chen</span>
+                        <span class="emp-email">sarah.c@obelisk.io</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Product & Design</td>
+                  <td>
+                    <div style="font-weight: 600;">Figma Desktop</div>
+                    <div style="font-size: 11px; color: var(--text-muted);">figma.com/file/1029/ERP-Design</div>
+                  </td>
+                  <td><span class="badge badge-active">Active</span></td>
+                  <td><span class="hours-pill">7H 10M</span></td>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <div class="progress-bar-container" style="width: 80px;">
+                        <div class="progress-bar-fill progress-high" style="width: 88%;"></div>
+                      </div>
+                      <span style="font-weight: 700; color: var(--productive-green);">88%</span>
+                    </div>
+                  </td>
+                  <td>1 min ago</td>
+                  <td style="text-align: right;">
+                    <a href="employee-detail.html" class="btn btn-secondary btn-sm">View Profile</a>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="emp-cell">
+                      <div class="emp-avatar" style="background: #fef3c7; color: #b45309;">MV</div>
+                      <div class="emp-details">
+                        <span class="emp-name">Marcus Vance</span>
+                        <span class="emp-email">marcus@obelisk.io</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>DevOps & Cloud</td>
+                  <td>
+                    <div style="font-weight: 600;">Chrome Browser</div>
+                    <div style="font-size: 11px; color: var(--text-muted);">reddit.com/r/sysadmin</div>
+                  </td>
+                  <td><span class="badge badge-idle">Idle (12m)</span></td>
+                  <td><span class="hours-pill">5H 20M</span></td>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <div class="progress-bar-container" style="width: 80px;">
+                        <div class="progress-bar-fill progress-medium" style="width: 64%;"></div>
+                      </div>
+                      <span style="font-weight: 700; color: var(--idle-amber);">64%</span>
+                    </div>
+                  </td>
+                  <td>12 min ago</td>
+                  <td style="text-align: right;">
+                    <a href="employee-detail.html" class="btn btn-secondary btn-sm">View Profile</a>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="emp-cell">
+                      <div class="emp-avatar" style="background: #e0e7ff; color: #4338ca;">ER</div>
+                      <div class="emp-details">
+                        <span class="emp-name">Elena Rostova</span>
+                        <span class="emp-email">elena@obelisk.io</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>QA & Testing</td>
+                  <td>
+                    <div style="font-weight: 600;">Postman.exe</div>
+                    <div style="font-size: 11px; color: var(--text-muted);">api.obelisk.internal/v1</div>
+                  </td>
+                  <td><span class="badge badge-active">Active</span></td>
+                  <td><span class="hours-pill">6H 50M</span></td>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <div class="progress-bar-container" style="width: 80px;">
+                        <div class="progress-bar-fill progress-high" style="width: 90%;"></div>
+                      </div>
+                      <span style="font-weight: 700; color: var(--productive-green);">90%</span>
+                    </div>
+                  </td>
+                  <td>Just now</td>
+                  <td style="text-align: right;">
+                    <a href="employee-detail.html" class="btn btn-secondary btn-sm">View Profile</a>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="emp-cell">
+                      <div class="emp-avatar" style="background: #fae8ff; color: #86198f;">PS</div>
+                      <div class="emp-details">
+                        <span class="emp-name">Priya Sharma</span>
+                        <span class="emp-email">priya@obelisk.io</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Data Analytics</td>
+                  <td>
+                    <div style="font-weight: 600;">DBeaver / PostgreSQL</div>
+                    <div style="font-size: 11px; color: var(--text-muted);">database.internal.obelisk</div>
+                  </td>
+                  <td><span class="badge badge-active">Active</span></td>
+                  <td><span class="hours-pill">7H 45M</span></td>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <div class="progress-bar-container" style="width: 80px;">
+                        <div class="progress-bar-fill progress-high" style="width: 95%;"></div>
+                      </div>
+                      <span style="font-weight: 700; color: var(--productive-green);">95%</span>
+                    </div>
+                  </td>
+                  <td>4 min ago</td>
+                  <td style="text-align: right;">
+                    <a href="employee-detail.html" class="btn btn-secondary btn-sm">View Profile</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Sidebar Collapse Toggle
+    document.getElementById('sidebarToggle').addEventListener('click', function() {
+      document.getElementById('sidebar').classList.toggle('collapsed');
+      document.getElementById('appLayout').classList.toggle('sidebar-collapsed');
+    });
+  </script>
+</body>
+</html>

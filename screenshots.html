@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Screenshot Gallery - Obelisk Activity Monitoring</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="screenshots">
+  <div class="app-layout" id="appLayout">
+    <!-- Left Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-wrapper">
+          <div class="brand-icon">O</div>
+          <div class="brand-text">
+            <span class="brand-title">OBELISK</span>
+            <span class="brand-subtitle">ERP Monitoring</span>
+          </div>
+        </div>
+        <button class="sidebar-toggle-btn" id="sidebarToggle" title="Toggle Sidebar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <a href="dashboard.html" class="nav-item">
+            <span class="icon">📊</span>
+            <span>Dashboard</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Monitoring</div>
+        <div class="nav-group">
+          <a href="dashboard.html" class="nav-item nav-item-sub">
+            <span>• Overview</span>
+          </a>
+          <a href="employee-timeline.html" class="nav-item nav-item-sub">
+            <span>• Employee Timeline</span>
+          </a>
+          <a href="activity.html" class="nav-item nav-item-sub">
+            <span>• App & Web Activity</span>
+          </a>
+          <a href="screenshots.html" class="nav-item nav-item-sub active">
+            <span>• Screenshots</span>
+          </a>
+          <a href="productivity.html" class="nav-item nav-item-sub">
+            <span>• Productivity</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Management</div>
+        <div class="nav-group">
+          <a href="timesheets.html" class="nav-item">
+            <span class="icon">⏱️</span>
+            <span>Timesheets</span>
+          </a>
+          <a href="employee-detail.html" class="nav-item">
+            <span class="icon">👥</span>
+            <span>Employees</span>
+          </a>
+        </div>
+
+        <div class="nav-section-title">Administration</div>
+        <div class="nav-group">
+          <a href="monitoring-settings.html" class="nav-item">
+            <span class="icon">⚙️</span>
+            <span>Monitoring Settings</span>
+          </a>
+          <a href="productivity-rules.html" class="nav-item">
+            <span class="icon">🎯</span>
+            <span>Productivity Rules</span>
+          </a>
+          <a href="consent-management.html" class="nav-item">
+            <span class="icon">🛡️</span>
+            <span>Consent Management</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-avatar">AP<span class="status-dot"></span></div>
+        <div class="user-info">
+          <span class="user-name">Akshay Prajapati</span>
+          <span class="user-role">System Admin</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="top-header">
+        <div class="header-left">
+          <h1 class="page-title">Automated Screenshot Audit Gallery</h1>
+          <div class="breadcrumb">
+            <a href="dashboard.html">Home</a>
+            <span>/</span>
+            <span>Activity Monitoring</span>
+            <span>/</span>
+            <span>Screenshots</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div class="header-date">Mon, Aug 10, 2026</div>
+          <div class="header-sync-status">
+            <span class="pulse-dot"></span>
+            <span>Last synced 2 min ago</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+          <div class="filter-group">
+            <span class="filter-label">Employee:</span>
+            <select class="form-control" id="empFilter">
+              <option value="">All Employees</option>
+              <option selected>Akshay Prajapati</option>
+              <option>Sarah Chen</option>
+              <option>Marcus Vance</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label">Project:</span>
+            <select class="form-control">
+              <option value="">All Projects</option>
+              <option selected>Obelisk ERP</option>
+              <option>Mobile Redesign</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label">Date:</span>
+            <input type="date" class="form-control" value="2026-08-10">
+          </div>
+
+          <div class="filter-group" style="display: flex; align-items: center; gap: 6px; font-size: 13px;">
+            <input type="checkbox" id="idleOnly">
+            <label for="idleOnly">Captured During Idle</label>
+          </div>
+
+          <div class="filter-group" style="display: flex; align-items: center; gap: 6px; font-size: 13px;">
+            <input type="checkbox" id="blurredOnly">
+            <label for="blurredOnly">Blurred Only</label>
+          </div>
+
+          <div style="display: flex; gap: 6px; margin-left: auto;">
+            <button class="btn btn-primary btn-sm" id="btnGrid">Grid View</button>
+            <button class="btn btn-secondary btn-sm" id="btnList">List View</button>
+          </div>
+        </div>
+
+        <!-- Privacy Notice Banner -->
+        <div class="warning-banner" style="background-color: #f0f9ff; border-color: #bae6fd; color: #0369a1;">
+          <span>🛡️</span>
+          <span><strong>Privacy Policy Enforced:</strong> Sensitive fields and passwords are blurred by policy. Screenshots taken during idle are flagged automatically. No keystroke logging or cursor clicks recorded.</span>
+        </div>
+
+        <!-- Screenshot Cards Gallery Grid -->
+        <div class="gallery-grid" id="galleryContainer">
+          <!-- Card 1: Active Cursor IDE -->
+          <div class="screenshot-card" onclick="openModal('14:22', 'Akshay Prajapati', 'Cursor.exe', 'github.com/obelisk', false, false)">
+            <div class="screenshot-thumb-wrapper">
+              <div class="screenshot-mock-img">
+                <div class="mock-window-bar">
+                  <span class="mock-dot mock-dot-red"></span>
+                  <span class="mock-dot mock-dot-yellow"></span>
+                  <span class="mock-dot mock-dot-green"></span>
+                  <span style="margin-left: 6px; color: #cbd5e1;">Cursor.exe - server.ts</span>
+                </div>
+                <div style="color: #38bdf8;">import express from 'express';</div>
+                <div style="color: #94a3b8;">const app = express(); // API controller</div>
+                <div style="color: #4ade80;">app.get('/api/monitoring', (req, res) =&gt; ...);</div>
+              </div>
+            </div>
+            <div class="screenshot-card-body">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="screenshot-time">14:22 AM</span>
+                <span class="badge badge-active">Active</span>
+              </div>
+              <div class="screenshot-app-info">Cursor.exe</div>
+              <div class="screenshot-domain">github.com/obelisk</div>
+              <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Emp: Akshay Prajapati</div>
+            </div>
+          </div>
+
+          <!-- Card 2: Chrome (Captured during idle) -->
+          <div class="screenshot-card" onclick="openModal('14:05', 'Akshay Prajapati', 'Chrome.exe', 'github.com/issues', true, false)">
+            <div class="screenshot-thumb-wrapper">
+              <span class="idle-banner-tag">Captured during idle</span>
+              <div class="screenshot-mock-img">
+                <div class="mock-window-bar">
+                  <span class="mock-dot mock-dot-red"></span>
+                  <span class="mock-dot mock-dot-yellow"></span>
+                  <span class="mock-dot mock-dot-green"></span>
+                  <span style="margin-left: 6px; color: #cbd5e1;">Chrome.exe - GitHub Issues</span>
+                </div>
+                <div style="color: #f1f5f9;">[Idle 12m] Github Issue #402</div>
+                <div style="color: #94a3b8;">User away from keyboard...</div>
+              </div>
+            </div>
+            <div class="screenshot-card-body">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="screenshot-time">14:05 PM</span>
+                <span class="badge badge-idle">Idle</span>
+              </div>
+              <div class="screenshot-app-info">Chrome.exe</div>
+              <div class="screenshot-domain">github.com/issues</div>
+              <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Emp: Akshay Prajapati</div>
+            </div>
+          </div>
+
+          <!-- Card 3: Blurred by Policy -->
+          <div class="screenshot-card" onclick="openModal('13:45', 'Sarah Chen', 'Slack.exe', 'slack.com', false, true)">
+            <div class="screenshot-thumb-wrapper">
+              <div class="screenshot-mock-img">
+                <div class="mock-window-bar">
+                  <span class="mock-dot mock-dot-red"></span>
+                  <span class="mock-dot mock-dot-yellow"></span>
+                  <span class="mock-dot mock-dot-green"></span>
+                  <span style="margin-left: 6px; color: #cbd5e1;">Slack.exe - Direct Message</span>
+                </div>
+              </div>
+              <div class="screenshot-blurred-overlay">
+                🔒
+                <span>Blurred by policy</span>
+                <span style="font-size: 10px; opacity: 0.8;">Sensitive Content Protection</span>
+              </div>
+            </div>
+            <div class="screenshot-card-body">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="screenshot-time">13:45 PM</span>
+                <span class="badge badge-active">Active</span>
+              </div>
+              <div class="screenshot-app-info">Slack.exe</div>
+              <div class="screenshot-domain">slack.com</div>
+              <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Emp: Sarah Chen</div>
+            </div>
+          </div>
+
+          <!-- Card 4: Figma.exe -->
+          <div class="screenshot-card" onclick="openModal('12:30', 'Sarah Chen', 'Figma.exe', 'figma.com/file/102', false, false)">
+            <div class="screenshot-thumb-wrapper">
+              <div class="screenshot-mock-img">
+                <div class="mock-window-bar">
+                  <span class="mock-dot mock-dot-red"></span>
+                  <span class="mock-dot mock-dot-yellow"></span>
+                  <span class="mock-dot mock-dot-green"></span>
+                  <span style="margin-left: 6px; color: #cbd5e1;">Figma.exe - ERP Canvas</span>
+                </div>
+                <div style="color: #c084fc;">[Figma Design Canvas]</div>
+                <div style="color: #94a3b8;">UI Components & Layouts</div>
+              </div>
+            </div>
+            <div class="screenshot-card-body">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="screenshot-time">12:30 PM</span>
+                <span class="badge badge-active">Active</span>
+              </div>
+              <div class="screenshot-app-info">Figma.exe</div>
+              <div class="screenshot-domain">figma.com</div>
+              <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Emp: Sarah Chen</div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Screenshot Detail Modal UI -->
+  <div class="modal-overlay" id="shotModal">
+    <div class="modal-container" style="max-width: 720px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 18px;">📷</span>
+          <span class="modal-title" id="mTitle">Screenshot Detail View</span>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal()">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="screenshot-thumb-wrapper" style="height: 320px; border-radius: 8px;" id="mMockView">
+          <div class="screenshot-mock-img" style="font-size: 13px; padding: 20px;">
+            <div class="mock-window-bar">
+              <span class="mock-dot mock-dot-red"></span>
+              <span class="mock-dot mock-dot-yellow"></span>
+              <span class="mock-dot mock-dot-green"></span>
+              <span style="margin-left: 10px; color: #cbd5e1;" id="mWinBar">Cursor.exe - App.tsx</span>
+            </div>
+            <div style="color: #38bdf8; margin-top: 10px;">// Obelisk Activity Monitoring Realtime Workspace</div>
+            <div style="color: #f1f5f9; margin-top: 6px;">export function AuditStream() { return &lt;Table /&gt;; }</div>
+          </div>
+          <div class="screenshot-blurred-overlay" id="mBlurOverlay" style="display: none;">
+            🔒
+            <span style="font-size: 16px;">Blurred by Privacy Policy</span>
+            <span>Sensitive text / credential field masked</span>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 20px; background: var(--bg-subtle); padding: 14px; border-radius: 8px;">
+          <div>
+            <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">EMPLOYEE</div>
+            <div style="font-weight: 600; color: var(--text-main);" id="mEmp">Akshay Prajapati</div>
+          </div>
+          <div>
+            <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">CAPTURE TIME</div>
+            <div style="font-weight: 600; color: var(--text-main);" id="mTime">14:22 PM</div>
+          </div>
+          <div>
+            <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">APPLICATION</div>
+            <div style="font-weight: 600; color: var(--text-main);" id="mApp">Cursor.exe</div>
+          </div>
+          <div>
+            <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">DOMAIN</div>
+            <div style="font-weight: 600; color: var(--text-main);" id="mDomain">github.com</div>
+          </div>
+          <div>
+            <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">IDLE STATUS</div>
+            <div id="mIdleTag"><span class="badge badge-active">Active</span></div>
+          </div>
+          <div>
+            <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">BLURRED</div>
+            <div id="mBlurTag"><span class="badge badge-neutral">No</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+        <button class="btn btn-primary" onclick="alert('Downloading encrypted screenshot archive...')">📥 Download Shot</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/static-data.js"></script>
+  <script src="js/tracking-service.js"></script>
+  <script src="js/app-common.js"></script>
+  <script src="js/pages.js"></script>
+  <script>
+    function closeModal() {
+      document.getElementById('shotModal').classList.remove('active');
+    }
+  </script>
+</body>
+</html>
