@@ -408,24 +408,6 @@
     const entityId = TS().getActiveEntityId();
     const settings = TS().getTrackingSettings(entityId).data;
     const rows = TS().getTimesheets(entityId, { workDate: WORK_DATE });
-    let totalGross = 0;
-    let totalIdle = 0;
-    let totalNet = 0;
-
-    rows.forEach((t) => {
-      totalGross += t.hoursWorked;
-      totalIdle += (t.idleSeconds || 0) / 3600;
-      totalNet += TS().computeNetHours(t.hoursWorked, t.idleSeconds, settings.idleCountsAsWork);
-    });
-
-    const totals = document.querySelectorAll('.card[style*="fff7ed"] [style*="font-size: 20px"]');
-
-    if (totals.length >= 3) {
-      totals[0].textContent = TS().formatDurationShort(totalGross * 3600);
-      totals[1].textContent = TS().formatDurationShort(totalIdle * 3600);
-      totals[2].textContent = TS().formatDurationShort(totalNet * 3600);
-    }
-
     const tbody = document.querySelector('.page-content .table tbody');
 
     if (!tbody) {
