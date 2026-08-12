@@ -7,6 +7,12 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-page="dashboard">
+  <div class="splash-screen" id="splashScreen">
+    <div class="splash-logo">O</div>
+    <div class="splash-title">OBELISK</div>
+    <div class="splash-subtitle">Activity Monitoring</div>
+    <div class="loader-spinner"></div>
+  </div>
   <div class="app-layout" id="appLayout">
     <!-- Left Sidebar -->
     <aside class="sidebar" id="sidebar">
@@ -163,7 +169,7 @@
             <div style="display: flex; justify-content: space-between; align-items: flex-start; height: 100%; flex-wrap: wrap; gap: 16px;">
               <div style="display: flex; flex-direction: column; justify-content: space-between; gap: 16px; flex: 1;">
                 <div>
-                  <span class="badge" style="background: rgba(249, 115, 22, 0.15); color: #ea580c; border: 1px solid rgba(249, 115, 22, 0.3); margin-bottom: 12px;">🛡️ Stealth Agent v4.2 Active</span>
+                  <span class="badge badge-accent" style="margin-bottom: 12px;">🛡️ Stealth Agent v4.2 Active</span>
                   <h2 style="font-size: 22px; font-weight: 800; color: var(--text-main); margin-bottom: 6px;">Workforce Monitoring Intelligence</h2>
                   <p style="font-size: 13px; color: var(--text-muted); max-width: 520px;">112 active agents capturing real-time keystrokes, active window shifts & stealth screenshots across Obelisk HQ teams.</p>
                 </div>
@@ -173,8 +179,8 @@
                   <a href="consent-management.html" class="btn btn-secondary btn-sm">🛡️ Consent Policy</a>
                 </div>
               </div>
-              <div style="background: #ffffff; padding: 16px; border-radius: 14px; border: 1px solid #fed7aa; text-align: center; min-width: 140px; box-shadow: var(--shadow-sm);">
-                <div style="font-size: 11px; text-transform: uppercase; color: #ea580c; font-weight: 700; letter-spacing: 0.5px;">Productivity Index</div>
+              <div class="metric-box-accent">
+                <div class="metric-label">Productivity Index</div>
                 <div style="font-size: 32px; font-weight: 800; color: var(--text-main); margin: 4px 0;">88.4%</div>
                 <span class="badge badge-active" style="font-size: 10px;">+2.1% today</span>
               </div>
@@ -182,7 +188,7 @@
           </div>
 
           <!-- Bento Metric Card (Span 4) -->
-          <div class="bento-card bento-col-4" style="background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%); border-color: #fed7aa;">
+          <div class="bento-card bento-col-4 bento-accent-card">
             <div class="bento-card-header">
               <span class="badge badge-productive">🔥 High Productivity</span>
               <span style="font-size: 11px; color: var(--text-muted); font-weight: 600;">Core Engineering</span>
@@ -193,8 +199,8 @@
               <p style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">Priya Sharma leading with 7h 40m active code time today in Obelisk ERP repository.</p>
             </div>
             <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
-              <span style="font-size: 11.5px; font-weight: 600; color: var(--primary-700);">Top App: Visual Studio Code</span>
-              <a href="productivity.html" style="font-size: 12px; font-weight: 700; color: var(--primary-600);">Rules →</a>
+              <span style="font-size: 11.5px; font-weight: 600; color: var(--brand-primary);">Top App: Visual Studio Code</span>
+              <a href="productivity.html" style="font-size: 12px; font-weight: 700; color: var(--brand-accent);">Rules →</a>
             </div>
           </div>
         </div>

@@ -22,11 +22,42 @@
     localStorage.setItem('activeEntityId', String(entityId));
   }
 
-  function initAuthContext() {
-    if (!localStorage.getItem('token')) {
-      localStorage.setItem('token', 'static-demo-token');
+  const DEMO_CREDENTIALS = { username: 'admin', password: 'admin123' };
+
+  function isAuthenticated() {
+    return !!localStorage.getItem('token');
+  }
+
+  function login(username, password, rememberMe) {
+    const normalized = (username || '').trim().toLowerCase();
+
+    if (normalized !== DEMO_CREDENTIALS.username || password !== DEMO_CREDENTIALS.password) {
+      return { status: 'error', message: 'Invalid username or password. Please try again.' };
     }
 
+    localStorage.setItem('token', 'static-demo-token');
+    localStorage.setItem('username', DEMO_CREDENTIALS.username);
+
+    if (rememberMe) {
+      localStorage.setItem('rememberMe', 'true');
+    } else {
+      localStorage.removeItem('rememberMe');
+    }
+
+    if (!localStorage.getItem('activeEntityId')) {
+      localStorage.setItem('activeEntityId', '1');
+    }
+
+    return success({ username: DEMO_CREDENTIALS.username }, 'Login successful');
+  }
+
+  function logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    localStorage.removeItem('rememberMe');
+  }
+
+  function initAuthContext() {
     if (!localStorage.getItem('activeEntityId')) {
       localStorage.setItem('activeEntityId', '1');
     }
@@ -432,6 +463,9 @@
 
   global.TrackingService = {
     initAuthContext,
+    isAuthenticated,
+    login,
+    logout,
     getActiveEntityId,
     setActiveEntityId,
     getEntityName,
