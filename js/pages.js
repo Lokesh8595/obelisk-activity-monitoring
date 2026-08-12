@@ -157,7 +157,7 @@
     const metaEl = document.querySelector('.timeline-emp-info div[style*="gap: 12px"]');
 
     if (metaEl) {
-      metaEl.innerHTML = `<span>Team: <strong>${employee.team}</strong></span><span>•</span><span>Project: <strong>${employee.project}</strong></span><span>•</span><span>Status: <strong style="color: var(--productive-green);">${employee.status.charAt(0).toUpperCase() + employee.status.slice(1)}</strong></span>`;
+      metaEl.innerHTML = `<span>Team: <strong>${employee.team}</strong></span><span>•</span><span>Project: <strong>${employee.project}</strong></span><span>•</span><span>Status: <strong style="color: var(--present-green);">${employee.status.charAt(0).toUpperCase() + employee.status.slice(1)}</strong></span>`;
     }
 
     const scoreEl = document.querySelector('.timeline-header [style*="font-size: 22px"]');
@@ -297,7 +297,7 @@
       domainBody.innerHTML = domains
         .map(
           (d) => `<tr>
-          <td><div style="display:flex;align-items:center;gap:8px;font-weight:600;"><span style="color:var(--primary-600);">🌐</span><span>${d.domain}</span></div></td>
+          <td><div style="display:flex;align-items:center;gap:8px;font-weight:600;"><span style="color:var(--brand-accent);">🌐</span><span>${d.domain}</span></div></td>
           <td><span class="badge ${TS().categoryBadgeClass(d.category)}">${TS().formatCategoryLabel(d.category)}</span></td>
           <td><strong>${TS().formatDuration(d.seconds)}</strong></td>
           <td>${d.visits} visits</td>
@@ -663,7 +663,7 @@
           rows[i].querySelector('span:first-child').textContent = t.team;
           rows[i].querySelector('span:last-child').textContent = `${t.score}%`;
           rows[i].querySelector('span:last-child').style.color =
-            t.score >= 75 ? 'var(--productive-green)' : 'var(--idle-amber)';
+            t.score >= 75 ? 'var(--present-green)' : 'var(--brand-accent)';
         }
 
         const bar = teamSection.querySelectorAll('.progress-bar-fill')[i];
