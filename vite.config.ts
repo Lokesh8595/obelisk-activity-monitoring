@@ -12,6 +12,7 @@ export default defineConfig(() => {
       rollupOptions: {
         input: {
           main: path.resolve(__dirname, 'index.html'),
+          login: path.resolve(__dirname, 'login.html'),
           dashboard: path.resolve(__dirname, 'dashboard.html'),
           employeeTimeline: path.resolve(__dirname, 'employee-timeline.html'),
           activity: path.resolve(__dirname, 'activity.html'),
