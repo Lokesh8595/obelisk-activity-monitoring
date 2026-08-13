@@ -32,7 +32,9 @@
     }
 
     btn.disabled = loading;
-    btn.textContent = loading ? 'Signing in…' : 'Sign In';
+    btn.innerHTML = loading
+      ? '<i class="pi pi-spin pi-spinner"></i> Signing in…'
+      : '<i class="pi pi-sign-in"></i> Sign In';
   }
 
   function initPasswordToggle() {
@@ -45,10 +47,15 @@
 
     toggle.addEventListener('click', function () {
       const isPassword = input.type === 'password';
+      const icon = toggle.querySelector('i');
 
       input.type = isPassword ? 'text' : 'password';
-      toggle.querySelector('.icon-eye').classList.toggle('hidden', !isPassword);
-      toggle.querySelector('.icon-eye-off').classList.toggle('hidden', isPassword);
+
+      if (icon) {
+        icon.className = isPassword ? 'pi pi-eye-slash' : 'pi pi-eye';
+      }
+
+      toggle.title = isPassword ? 'Hide password' : 'Show password';
     });
   }
 
@@ -88,7 +95,39 @@
     });
   }
 
+  function applySavedTheme() {
+    try {
+      if (localStorage.getItem('obelisk-dark') === '1') {
+        document.documentElement.classList.add('app-dark');
+      }
+    } catch (e) {
+      /* ignore */
+    }
+  }
+
+  function initDynamicBranding() {
+    fetch('/api/v1/configs')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        const cfg = data && (data.data || data.config || data);
+
+        if (cfg && window.ObeliskApp && typeof window.ObeliskApp.applyBrandColor === 'function' && cfg.primaryColor) {
+          window.ObeliskApp.applyBrandColor(cfg.primaryColor, cfg.secondaryColor);
+        }
+
+        if (cfg && (cfg.title || cfg.appTitle)) {
+          document.title = cfg.title || cfg.appTitle;
+        }
+      })
+      .catch(function () {
+        /* optional API */
+      });
+  }
+
   function boot() {
+    applySavedTheme();
+    initDynamicBranding();
+
     if (TS().isAuthenticated()) {
       window.location.href = 'dashboard.html';
       return;

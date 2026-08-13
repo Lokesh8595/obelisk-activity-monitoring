@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Employee Day Timeline - Obelisk Activity Monitoring</title>
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('obelisk-dark') === '1') {
+          document.documentElement.classList.add('app-dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body data-page="timeline">
   <div class="app-layout" id="appLayout">
@@ -127,12 +136,6 @@
           <div class="filter-group">
             <span class="filter-label">Date:</span>
             <input type="date" class="form-control" value="2026-08-10">
-          </div>
-
-          <div style="display: flex; gap: 6px; margin-left: auto;">
-            <button class="btn btn-secondary btn-sm">◀ Previous Day</button>
-            <button class="btn btn-secondary btn-sm">Today</button>
-            <button class="btn btn-secondary btn-sm">Next Day ▶</button>
           </div>
         </div>
 

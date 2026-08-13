@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Screenshot Gallery - Obelisk Activity Monitoring</title>
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('obelisk-dark') === '1') {
+          document.documentElement.classList.add('app-dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body data-page="screenshots">
   <div class="app-layout" id="appLayout">

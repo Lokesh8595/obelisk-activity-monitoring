@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Productivity Rules Manager - Obelisk Activity Monitoring</title>
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('obelisk-dark') === '1') {
+          document.documentElement.classList.add('app-dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body data-page="rules">
   <div class="app-layout" id="appLayout">
@@ -117,18 +126,9 @@
           <span><strong>Notice:</strong> Changing categorization rules will automatically re-classify historical activity logs and update overall productivity scores across teams.</span>
         </div>
 
-        <!-- Global Classification Defaults Bar -->
-        <div class="filter-bar">
-          <div class="filter-group">
-            <span class="filter-label">Default Fallback Category:</span>
-            <select class="form-control" style="font-weight: 600;">
-              <option>Neutral (Recommended)</option>
-              <option>Unproductive</option>
-              <option>Productive</option>
-            </select>
-          </div>
-
-          <button class="btn btn-primary btn-sm" style="margin-left: auto;" onclick="openAddRuleModal()">➕ Add Custom Rule</button>
+        <div class="page-action-header">
+          <div></div>
+          <button class="btn btn-primary" onclick="openAddRuleModal()">➕ Add Custom Rule</button>
         </div>
 
         <!-- Rules Grid -->

@@ -12,7 +12,7 @@
   --color-present: #16a34a;
   --color-critical: #dc2626;
   --color-muted: #6b7280;
-  --color-border: #f3f4f6;
+  --color-border: #e4e4e7;
 
   --color-primary: #061944;
   --color-accent: #F68E34;
@@ -20,7 +20,9 @@
 }
 
 :root {
-  --brand-primary: #061944;
+  --primary-color: #061944;
+  --primary-color-text: #ffffff;
+  --brand-primary: var(--primary-color);
   --brand-white: #ffffff;
   --brand-accent: #F68E34;
   --brand-accent-alt: #ed7d31;
@@ -29,13 +31,20 @@
   --present-green: #16a34a;
   --unproductive-red: #ef4444;
   --critical-red: #dc2626;
-  --text-muted: #6b7280;
-  --border-color: #f3f4f6;
+  --text-muted: #71717a;
+  --border-color: #e4e4e7;
   --loader-color: #ed7d31;
   --splash-bg: #0f1b33;
 }
 
+html {
+  font-size: 14px;
+}
+
 body {
+  font-family: 'Lato', sans-serif;
   color: var(--brand-primary);
-  background-color: #f8f9fb;
+  background-color: #f4f4f5;
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
 }

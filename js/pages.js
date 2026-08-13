@@ -16,6 +16,7 @@
     }
 
     global.ObeliskApp.initHeaderSync();
+    global.ObeliskApp.initPaginators();
   }
 
   function timeFromIso(iso) {
@@ -62,62 +63,195 @@
   }
 
   /* ── Dashboard ── */
-  function renderDashboard() {
-    const entityId = TS().getActiveEntityId();
-    const rows = TS().getDashboardRows(entityId);
-    const tbody = document.querySelector('#empTable tbody');
+  function greetingForHour(hour) {
+    if (hour < 12) {
+      return 'Good Morning';
+    }
 
-    if (!tbody) {
+    if (hour < 17) {
+      return 'Good Afternoon';
+    }
+
+    return 'Good Evening';
+  }
+
+  function renderWelcomeBanner() {
+    const banner = document.getElementById('dashWelcome');
+
+    if (!banner) {
       return;
     }
 
-    tbody.innerHTML = rows
-      .map((row) => {
-        const e = row.employee;
+    const entityId = TS().getActiveEntityId();
+    const employees = TS().getEmployeesByEntity(entityId);
+    const employee =
+      DATA().EMPLOYEES.find((e) => e.id === 412 && e.entityId === entityId) ||
+      employees[0];
 
-        return `<tr>
-          <td>
-            <div class="emp-cell">
-              <div class="emp-avatar" style="${e.avatarStyle}">${e.initials}</div>
-              <div class="emp-details">
-                <span class="emp-name">${e.name}</span>
-                <span class="emp-email">${e.email}</span>
-              </div>
-            </div>
-          </td>
-          <td>${e.team}</td>
-          <td>${e.project}</td>
-          <td>${statusBadge(e.status)}</td>
-          <td>${TS().formatDurationShort(row.activeSeconds + row.idleSeconds)}</td>
-          <td>${TS().formatDurationShort(row.idleSeconds)}</td>
-          <td>
-            <div style="display: flex; align-items: center; gap: 8px;">
-              <div class="progress-bar-container" style="width: 80px;">
-                <div class="progress-bar-fill ${progressClass(row.productivityScore)}" style="width: ${row.productivityScore}%;"></div>
-              </div>
-              <span style="font-weight: 600;">${row.productivityScore}%</span>
-            </div>
-          </td>
-          <td>${row.screenshotCount}</td>
-          <td${e.status === 'offline' ? ' title="Laptop appears offline"' : ''}>${row.lastSynced}</td>
-          <td style="text-align: right;">
-            <a href="employee-detail.html?userId=${e.id}" class="btn btn-outline btn-sm">View</a>
-            <a href="employee-timeline.html?userId=${e.id}" class="btn btn-secondary btn-sm">Timeline</a>
-            <a href="screenshots.html?userId=${e.id}" class="btn btn-secondary btn-sm">Shots</a>
-          </td>
-        </tr>`;
-      })
-      .join('');
+    if (!employee) {
+      banner.classList.add('hidden');
+      return;
+    }
 
-    const search = document.getElementById('tableSearch');
+    const segments = TS().getDayTimeline(employee.id, WORK_DATE, entityId);
+    const stats = TS().computeProductivityScore(segments);
+    const statusLabel = employee.status.charAt(0).toUpperCase() + employee.status.slice(1);
+    const dateParts = WORK_DATE.split('-');
+    const hour = 16;
 
-    if (search) {
-      search.onkeyup = function () {
-        const term = this.value.toLowerCase();
-        tbody.querySelectorAll('tr').forEach((row) => {
-          row.style.display = row.innerText.toLowerCase().includes(term) ? '' : 'none';
-        });
-      };
+    const avatar = banner.querySelector('.dash-welcome-avatar');
+    const title = banner.querySelector('h2');
+    const dateEl = banner.querySelector('.dash-welcome-date');
+    const metaEl = banner.querySelector('.dash-welcome-meta');
+    const hoursEl = banner.querySelector('.dash-welcome-hours .value');
+    const action = banner.querySelector('.dash-welcome-action');
+
+    if (avatar) {
+      avatar.textContent = employee.initials;
+      avatar.setAttribute('style', employee.avatarStyle || '');
+    }
+
+    if (title) {
+      title.textContent = greetingForHour(hour) + ', ' + employee.name + '!';
+    }
+
+    if (dateEl) {
+      dateEl.textContent = dateParts[2] + '/' + dateParts[1] + '/' + dateParts[0];
+    }
+
+    if (metaEl) {
+      metaEl.textContent =
+        'Agent ' +
+        statusLabel +
+        ' • Last synced ' +
+        TS().getLastSyncedLabel(employee.lastReceivedAt) +
+        ' • ' +
+        employee.team;
+    }
+
+    if (hoursEl) {
+      hoursEl.textContent = TS().formatDurationShort(stats.activeTotal);
+    }
+
+    if (action) {
+      action.href = 'employee-timeline.html?userId=' + employee.id;
+    }
+  }
+
+  function renderDashboard() {
+    renderWelcomeBanner();
+    const entityId = TS().getActiveEntityId();
+    const rows = TS().getDashboardRows(entityId);
+    const rollup = DATA().PRODUCTIVITY_ROLLUP;
+    const totals = rollup.totals;
+    const active = rows.filter((r) => r.employee.status === 'active').length;
+    const idle = rows.filter((r) => r.employee.status === 'idle').length;
+    const offline = rows.filter((r) => r.employee.status === 'offline').length;
+    const shots = rows.reduce((sum, r) => sum + r.screenshotCount, 0);
+    const prodHours = totals.productiveSeconds / 3600;
+    const unprodHours = totals.unproductiveSeconds / 3600;
+    const timeTotal = totals.productiveSeconds + totals.unproductiveSeconds + totals.neutralSeconds + totals.idleSeconds;
+
+    const summaryValues = document.querySelectorAll('.summary-grid .summary-value');
+
+    if (summaryValues.length >= 7) {
+      summaryValues[0].textContent = String(rows.length);
+      summaryValues[1].textContent = String(active);
+      summaryValues[2].textContent = String(idle);
+      summaryValues[3].textContent = prodHours.toFixed(1) + 'h';
+      summaryValues[4].textContent = unprodHours.toFixed(1) + 'h';
+      summaryValues[5].textContent = shots.toLocaleString();
+      summaryValues[6].textContent = rows[0] ? rows[0].lastSynced : '—';
+    }
+
+    const daily = document.getElementById('dashDailyBars');
+
+    if (daily) {
+      daily.innerHTML = rollup.dailyScores
+        .map(
+          (d) =>
+            `<div class="chart-bar-col"><div class="chart-bar-fill" style="height:${d.score}%;background:var(--primary-color)" title="${d.day}: ${d.score}%"></div><span class="chart-bar-label">${d.day}</span></div>`
+        )
+        .join('');
+    }
+
+    const pPct = Math.round((totals.productiveSeconds / timeTotal) * 100);
+    const uPct = Math.round((totals.unproductiveSeconds / timeTotal) * 100);
+    const nPct = Math.round((totals.neutralSeconds / timeTotal) * 100);
+    const iPct = Math.max(0, 100 - pPct - uPct - nPct);
+    const donut = document.getElementById('dashDonut');
+
+    if (donut) {
+      donut.style.background = `conic-gradient(var(--productive-green) 0 ${pPct}%, var(--unproductive-red) ${pPct}% ${pPct + uPct}%, var(--p-surface-400) ${pPct + uPct}% ${pPct + uPct + nPct}%, var(--idle-amber) ${pPct + uPct + nPct}% 100%)`;
+      donut.innerHTML = `<div class="chart-donut-inner"><strong>${pPct}%</strong><span>Productive</span></div>`;
+    }
+
+    const legend = document.getElementById('dashDonutLegend');
+
+    if (legend) {
+      legend.innerHTML = [
+        ['Productive', 'var(--productive-green)', pPct],
+        ['Unproductive', 'var(--unproductive-red)', uPct],
+        ['Neutral', 'var(--p-surface-400)', nPct],
+        ['Idle', 'var(--idle-amber)', iPct]
+      ]
+        .map((item) => `<span class="chart-legend-item"><span class="chart-swatch" style="background:${item[1]}"></span>${item[0]} ${item[2]}%</span>`)
+        .join('');
+    }
+
+    const teamBars = document.getElementById('dashTeamBars');
+
+    if (teamBars) {
+      teamBars.innerHTML = rollup.teamComparison
+        .map(
+          (t) =>
+            `<div class="hbar-row"><span class="hbar-label">${t.team}</span><div class="hbar-track"><div class="hbar-fill" style="width:${t.score}%"></div></div><span class="hbar-value">${t.score}%</span></div>`
+        )
+        .join('');
+    }
+
+    const statusMix = document.getElementById('dashStatusMix');
+
+    if (statusMix) {
+      statusMix.innerHTML =
+        `<div class="status-mix-card"><strong>${active}</strong><span>Active</span></div>` +
+        `<div class="status-mix-card"><strong>${idle}</strong><span>Idle</span></div>` +
+        `<div class="status-mix-card"><strong>${offline}</strong><span>Offline</span></div>`;
+    }
+
+    const statusBars = document.getElementById('dashStatusBars');
+    const totalEmp = rows.length || 1;
+
+    if (statusBars) {
+      statusBars.innerHTML = [
+        ['Active', active, 'var(--present-green)'],
+        ['Idle', idle, 'var(--idle-amber)'],
+        ['Offline', offline, 'var(--unproductive-red)']
+      ]
+        .map(
+          (s) =>
+            `<div class="hbar-row"><span class="hbar-label">${s[0]}</span><div class="hbar-track"><div class="hbar-fill" style="width:${Math.round((s[1] / totalEmp) * 100)}%;background:${s[2]}"></div></div><span class="hbar-value">${s[1]}</span></div>`
+        )
+        .join('');
+    }
+
+    const top = document.getElementById('dashTopEmployees');
+
+    if (top) {
+      top.innerHTML = rows
+        .slice()
+        .sort((a, b) => b.productivityScore - a.productivityScore)
+        .slice(0, 6)
+        .map((row) => {
+          const e = row.employee;
+
+          return `<a class="top-emp-item" href="employee-detail.html?userId=${e.id}">
+            <div class="emp-avatar" style="${e.avatarStyle}">${e.initials}</div>
+            <div class="top-emp-meta"><strong>${e.name}</strong><span>${e.team} • ${e.project}</span></div>
+            <div class="top-emp-score">${row.productivityScore}%</div>
+          </a>`;
+        })
+        .join('');
     }
   }
 
@@ -423,14 +557,20 @@
 
         return `<tr>
           <td><div class="emp-cell"><div class="emp-avatar" style="${emp.avatarStyle}">${emp.initials}</div><span class="emp-name">${emp.name}</span></div></td>
-          <td>${t.workDate}</td>
+          <td>${global.ObeliskApp.formatDateDMY(t.workDate)}</td>
           <td>${t.projectName}</td>
           <td>${t.taskDescription}</td>
           <td><span class="hours-pill">${TS().formatDurationShort(t.hoursWorked * 3600)}</span></td>
           <td><span class="hours-pill" style="color: var(--idle-amber);">${idleDisplay}</span></td>
           <td><span class="hours-pill" style="color: var(--productive-green);">${TS().formatDurationShort(net * 3600)}</span></td>
           <td><span class="badge ${statusClass}">${t.approvalStatus}</span></td>
-          <td style="text-align: right;"><a href="employee-timeline.html?userId=${t.userId}" class="btn btn-secondary btn-sm">Verify Timeline</a></td>
+          <td style="text-align: right;">
+            ${global.ObeliskApp.actionMenuHtml([
+              { href: `employee-timeline.html?userId=${t.userId}`, icon: 'pi-clock', label: 'Verify timeline' },
+              { href: `employee-detail.html?userId=${t.userId}`, icon: 'pi-user', label: 'View profile' },
+              { href: `screenshots.html?userId=${t.userId}`, icon: 'pi-camera', label: 'Screenshots' }
+            ])}
+          </td>
         </tr>`;
       })
       .join('');
@@ -497,17 +637,6 @@
     const entityId = TS().getActiveEntityId();
     const settings = TS().getTrackingSettings(entityId).data;
     const rules = settings.rules;
-    const defaultSelect = document.querySelector('.filter-bar select');
-
-    if (defaultSelect) {
-      defaultSelect.value = rules.defaultCategory.charAt(0).toUpperCase() + rules.defaultCategory.slice(1) + ' (Recommended)';
-      defaultSelect.onchange = function () {
-        const val = this.value.toLowerCase().split(' ')[0];
-        rules.defaultCategory = val;
-        TS().reclassifySegments(entityId);
-        alert('Re-classification job started — historical segments will update shortly.');
-      };
-    }
 
     renderRuleList('prodAppList', rules.productiveApps, 'productive');
     renderRuleListBySelector('.rules-container .card:nth-child(2) .rules-list', rules.unproductiveApps, 'unproductive');
@@ -578,7 +707,13 @@
           <td>${r.consentedAt}</td>
           <td><strong>${r.consentVersion}</strong></td>
           <td>${r.revokedAt}</td>
-          <td style="text-align:right;"><button class="btn btn-outline btn-sm" onclick="openConsentModal('${e.name}', '${r.status}', '${r.consentedAt}')">View Consent</button></td>
+          <td style="text-align:right;">
+            ${global.ObeliskApp.actionMenuHtml([
+              { onclick: `openConsentModal('${e.name}', '${r.status}', '${r.consentedAt}')`, icon: 'pi-eye', label: 'View consent' },
+              { onclick: `alert('Consent renewal requested for ${e.name}')`, icon: 'pi-send', label: 'Request renewal' },
+              { href: `employee-detail.html?userId=${e.id}`, icon: 'pi-user', label: 'View profile' }
+            ])}
+          </td>
         </tr>`;
       })
       .join('');
@@ -776,6 +911,8 @@
     if (page && global.ObeliskPages[page]) {
       global.ObeliskPages[page]();
     }
+
+    global.ObeliskApp.initPaginators();
   }
 
   global.ObeliskPages = {
