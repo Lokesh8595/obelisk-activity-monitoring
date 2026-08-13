@@ -1351,7 +1351,7 @@
   /** Weekly productivity rollup for §1.7 / §3.3 dashboards */
   const PRODUCTIVITY_ROLLUP = {
     team: 'Core Engineering',
-    weekLabel: 'Aug 04 - Aug 10, 2026',
+    weekLabel: '04/08/2026 - 10/08/2026',
     dailyScores: [
       { day: 'Mon', score: 78 },
       { day: 'Tue', score: 85 },
@@ -1372,6 +1372,228 @@
       { team: 'Digital Marketing', score: 65 }
     ]
   };
+
+  (function seedExtraStaticData() {
+    const palette = [
+      'background: #dbeafe; color: #1d4ed8;',
+      'background: #fce7f3; color: #be185d;',
+      'background: #fef3c7; color: #b45309;',
+      'background: #e0e7ff; color: #4338ca;',
+      'background: #dcfce7; color: #15803d;',
+      'background: #fae8ff; color: #86198f;',
+      'background: #cffafe; color: #0e7490;',
+      'background: #ffedd5; color: #c2410c;',
+      'background: #f1f5f9; color: #334155;',
+      'background: #fee2e2; color: #b91c1c;'
+    ];
+
+    const extras = [
+      { name: 'Rahul Mehta', team: 'Core Engineering', project: 'Obelisk ERP', entityId: 1, status: 'active' },
+      { name: 'Neha Kapoor', team: 'Core Engineering', project: 'Obelisk ERP', entityId: 1, status: 'active' },
+      { name: 'Vikram Singh', team: 'Core Engineering', project: 'Cloud Migration', entityId: 1, status: 'idle' },
+      { name: 'Ananya Iyer', team: 'Core Engineering', project: 'Obelisk ERP', entityId: 1, status: 'active' },
+      { name: 'Rohit Desai', team: 'Core Engineering', project: 'Cloud Migration', entityId: 1, status: 'active' },
+      { name: 'Kavya Nair', team: 'Product & UI/UX', project: 'Mobile Redesign', entityId: 1, status: 'active' },
+      { name: 'Arjun Patel', team: 'Product & UI/UX', project: 'Mobile Redesign', entityId: 1, status: 'idle' },
+      { name: 'Meera Joshi', team: 'Product & UI/UX', project: 'Obelisk ERP', entityId: 1, status: 'active' },
+      { name: 'Siddharth Rao', team: 'Quality Assurance', project: 'Obelisk ERP', entityId: 1, status: 'active' },
+      { name: 'Pooja Kulkarni', team: 'Quality Assurance', project: 'Obelisk ERP', entityId: 1, status: 'active' },
+      { name: 'Nikhil Verma', team: 'Quality Assurance', project: 'Cloud Migration', entityId: 1, status: 'offline' },
+      { name: 'Ishita Bansal', team: 'Core Engineering', project: 'Obelisk ERP', entityId: 1, status: 'active' },
+      { name: 'Karthik Reddy', team: 'Core Engineering', project: 'Obelisk ERP', entityId: 1, status: 'active' },
+      { name: 'Divya Menon', team: 'Product & UI/UX', project: 'Mobile Redesign', entityId: 1, status: 'active' },
+      { name: 'Aman Gupta', team: 'Core Engineering', project: 'Cloud Migration', entityId: 1, status: 'idle' },
+      { name: 'Sneha Pillai', team: 'Quality Assurance', project: 'Obelisk ERP', entityId: 1, status: 'active' },
+      { name: 'Harsh Vardhan', team: 'Core Engineering', project: 'Obelisk ERP', entityId: 1, status: 'active' },
+      { name: 'Riya Malhotra', team: 'Product & UI/UX', project: 'Mobile Redesign', entityId: 1, status: 'offline' },
+      { name: 'Aditya Chauhan', team: 'Core Engineering', project: 'Cloud Migration', entityId: 1, status: 'active' },
+      { name: 'Tanvi Shah', team: 'Quality Assurance', project: 'Obelisk ERP', entityId: 1, status: 'active' },
+      { name: 'Manish Agarwal', team: 'Core Engineering', project: 'Obelisk ERP', entityId: 1, status: 'active' },
+      { name: 'Shreya Bhatt', team: 'Product & UI/UX', project: 'Mobile Redesign', entityId: 1, status: 'idle' },
+      { name: 'Yash Thakur', team: 'Core Engineering', project: 'Cloud Migration', entityId: 1, status: 'active' },
+      { name: 'Nisha Goyal', team: 'Quality Assurance', project: 'Obelisk ERP', entityId: 1, status: 'active' },
+      { name: 'Kunal Bhatt', team: 'Core Engineering', project: 'Obelisk ERP', entityId: 1, status: 'active' },
+      { name: 'Aisha Khan', team: 'Product & UI/UX', project: 'Mobile Redesign', entityId: 1, status: 'active' },
+      { name: 'Pranav Kulkarni', team: 'Core Engineering', project: 'Cloud Migration', entityId: 1, status: 'idle' },
+      { name: 'Leela Krishnan', team: 'Quality Assurance', project: 'Obelisk ERP', entityId: 1, status: 'active' },
+      { name: 'Saurabh Jain', team: 'Core Engineering', project: 'Obelisk ERP', entityId: 1, status: 'offline' },
+      { name: 'Fatima Sheikh', team: 'Product & UI/UX', project: 'Mobile Redesign', entityId: 1, status: 'active' },
+      { name: 'Devansh Parekh', team: 'Core Engineering', project: 'Cloud Migration', entityId: 1, status: 'active' },
+      { name: 'Monica Dsouza', team: 'Quality Assurance', project: 'Obelisk ERP', entityId: 1, status: 'active' },
+      { name: 'Abhishek Nanda', team: 'Core Engineering', project: 'Obelisk ERP', entityId: 1, status: 'active' },
+      { name: 'Pallavi Deshmukh', team: 'Product & UI/UX', project: 'Mobile Redesign', entityId: 1, status: 'idle' },
+      { name: 'Ritesh Kumar', team: 'Core Engineering', project: 'Cloud Migration', entityId: 1, status: 'active' },
+      { name: 'Simran Kaur', team: 'Quality Assurance', project: 'Obelisk ERP', entityId: 1, status: 'active' },
+      { name: 'Varun Sethi', team: 'Core Engineering', project: 'Obelisk ERP', entityId: 1, status: 'active' },
+      { name: 'Chitra Raman', team: 'Product & UI/UX', project: 'Mobile Redesign', entityId: 1, status: 'active' },
+      { name: 'Gaurav Bansal', team: 'Core Engineering', project: 'Cloud Migration', entityId: 1, status: 'offline' },
+      { name: 'Anjali Sinha', team: 'Quality Assurance', project: 'Obelisk ERP', entityId: 1, status: 'active' },
+      { name: 'Lukas Weber', team: 'Platform Ops', project: 'EU Compliance', entityId: 2, status: 'active' },
+      { name: 'Sofia Ricci', team: 'Platform Ops', project: 'EU Compliance', entityId: 2, status: 'idle' },
+      { name: 'Noah Andersen', team: 'Customer Success', project: 'EU Onboarding', entityId: 2, status: 'active' },
+      { name: 'Ines Moreau', team: 'Customer Success', project: 'EU Onboarding', entityId: 2, status: 'active' },
+      { name: 'Mateusz Kowalski', team: 'Platform Ops', project: 'EU Compliance', entityId: 2, status: 'offline' },
+      { name: 'Clara Jensen', team: 'Customer Success', project: 'EU Onboarding', entityId: 2, status: 'active' },
+      { name: 'Felix Bauer', team: 'Platform Ops', project: 'EU Compliance', entityId: 2, status: 'active' },
+      { name: 'Helena Novak', team: 'Customer Success', project: 'EU Onboarding', entityId: 2, status: 'idle' },
+      { name: 'Wei Chen', team: 'Digital Marketing', project: 'Growth Q3', entityId: 3, status: 'active' },
+      { name: 'Mei Lin', team: 'Digital Marketing', project: 'Growth Q3', entityId: 3, status: 'active' },
+      { name: 'Kenji Sato', team: 'Digital Marketing', project: 'Growth Q3', entityId: 3, status: 'idle' },
+      { name: 'Aiko Nakamura', team: 'Digital Marketing', project: 'Growth Q3', entityId: 3, status: 'active' },
+      { name: 'Minho Park', team: 'Digital Marketing', project: 'Growth Q3', entityId: 3, status: 'offline' },
+      { name: 'Siti Rahman', team: 'Digital Marketing', project: 'Growth Q3', entityId: 3, status: 'active' }
+    ];
+
+    const apps = [
+      { appName: 'code.exe', appTitle: 'src — Obelisk ERP', domain: 'github.com', kind: 'active', category: 'productive' },
+      { appName: 'cursor.exe', appTitle: 'feature-branch — Monitoring', domain: 'github.com', kind: 'active', category: 'productive' },
+      { appName: 'slack.exe', appTitle: '#team-chat — Obelisk', domain: 'slack.com', kind: 'active', category: 'productive' },
+      { appName: 'figma.exe', appTitle: 'Design System', domain: 'figma.com', kind: 'active', category: 'productive' },
+      { appName: 'chrome.exe', appTitle: 'YouTube', domain: 'youtube.com', kind: 'active', category: 'unproductive' },
+      { appName: 'teams.exe', appTitle: 'Standup — Obelisk', domain: 'teams.microsoft.com', kind: 'active', category: 'productive' }
+    ];
+
+    const tasks = {
+      'Obelisk ERP': 'Feature implementation & code review',
+      'Cloud Migration': 'Infrastructure rollout',
+      'Mobile Redesign': 'UI kit and prototype updates',
+      'EU Compliance': 'GDPR control mapping',
+      'EU Onboarding': 'Customer onboarding checklist',
+      'Growth Q3': 'Campaign performance review'
+    };
+
+    const tz = { 1: '+05:30', 2: '+01:00', 3: '+09:00' };
+    const existingIds = new Set(EMPLOYEES.map((e) => e.id));
+    let nextId = 421;
+    let segSeq = 500;
+    let shotSeq = 500;
+
+    function pad(n) {
+      return String(n).padStart(2, '0');
+    }
+
+    function uuid(prefix, n) {
+      return prefix + '-e001-4000-8000-' + String(n).padStart(12, '0');
+    }
+
+    extras.forEach(function (person, index) {
+      while (existingIds.has(nextId)) {
+        nextId += 1;
+      }
+
+      const id = nextId;
+      nextId += 1;
+      existingIds.add(id);
+
+      const parts = person.name.split(' ');
+      const initials = (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+      const email = person.name.toLowerCase().replace(/[^a-z]+/g, '.').replace(/^\.|\.$/g, '') + '@obelisk.io';
+      const offset = tz[person.entityId] || '+05:30';
+      const minute = pad((index * 3) % 50);
+      const hour = person.status === 'offline' ? '13' : person.status === 'idle' ? '15' : '16';
+      const lastReceivedAt = '2026-08-10T' + hour + ':' + minute + ':00' + offset;
+
+      EMPLOYEES.push({
+        id: id,
+        entityId: person.entityId,
+        name: person.name,
+        email: email,
+        initials: initials,
+        avatarStyle: palette[index % palette.length],
+        team: person.team,
+        project: person.project,
+        status: person.status,
+        lastReceivedAt: lastReceivedAt
+      });
+
+      const consentRoll = index % 9;
+      USER_CONSENT.push({
+        userId: id,
+        entityId: person.entityId,
+        consentedAt: consentRoll === 0 ? null : '2026-0' + (1 + (index % 6)) + '-' + pad(10 + (index % 18)) + 'T10:00:00' + offset,
+        consentVersion: 'v1.0',
+        revokedAt: consentRoll === 1 ? '2026-07-' + pad(5 + (index % 20)) + 'T14:00:00' + offset : null
+      });
+
+      const idleMap = { active: 1800 + (index % 8) * 300, idle: 7200 + (index % 5) * 600, offline: null };
+      const hoursMap = { active: 8, idle: 7, offline: 4 };
+      const statusMap = { active: 'Approved', idle: 'Under Review', offline: 'Pending' };
+
+      TIMESHEETS.push({
+        userId: id,
+        entityId: person.entityId,
+        workDate: '2026-08-10',
+        projectName: person.project,
+        taskDescription: tasks[person.project] || 'Daily tracked work',
+        startTime: '09:00:00',
+        endTime: person.status === 'offline' ? '13:00:00' : '17:00:00',
+        hoursWorked: hoursMap[person.status],
+        idleSeconds: idleMap[person.status],
+        approvalStatus: statusMap[person.status]
+      });
+
+      if (person.status === 'offline') {
+        return;
+      }
+
+      const dayApps = [
+        apps[index % apps.length],
+        apps[(index + 2) % apps.length],
+        { appName: '', appTitle: 'Away from Desk', domain: '', kind: 'idle', category: 'neutral' },
+        apps[(index + 4) % apps.length]
+      ];
+
+      let cursor = 9;
+
+      dayApps.forEach(function (app, sIndex) {
+        const startH = cursor;
+        const durH = sIndex === 2 ? 0 : 1;
+        const durM = sIndex === 2 ? 18 : 45;
+        const endH = startH + durH;
+        const endM = durM;
+        const seconds = durH * 3600 + durM * 60;
+        cursor = endH;
+
+        ACTIVITY_SEGMENTS.push({
+          id: uuid('a1b2c3d4', segSeq),
+          userId: id,
+          entityId: person.entityId,
+          projectId: person.project === 'Mobile Redesign' ? 90 : 88,
+          taskId: 1200 + (index % 40),
+          kind: app.kind,
+          appName: app.appName,
+          appTitle: app.appTitle,
+          domain: app.domain,
+          clientCategory: app.category,
+          category: app.category,
+          startedAt: '2026-08-10T' + pad(startH) + ':00:00' + offset,
+          endedAt: '2026-08-10T' + pad(endH) + ':' + pad(endM) + ':00' + offset,
+          seconds: seconds,
+          receivedAt: '2026-08-10T' + pad(endH) + ':' + pad(endM + 1) + ':00' + offset
+        });
+        segSeq += 1;
+      });
+
+      [10, 14].forEach(function (shotHour, sIndex) {
+        SCREENSHOTS.push({
+          id: uuid('4b21c3d4', shotSeq),
+          userId: id,
+          entityId: person.entityId,
+          projectId: person.project === 'Mobile Redesign' ? 90 : 88,
+          taskId: 1200 + (index % 40),
+          capturedAt: '2026-08-10T' + pad(shotHour) + ':' + pad(15 + sIndex * 10) + ':00' + offset,
+          width: 1697,
+          height: 955,
+          monitors: 1 + (index % 2),
+          bytes: 140000 + index * 850,
+          duringIdle: person.status === 'idle' && sIndex === 1,
+          blurred: index % 11 === 0,
+          receivedAt: '2026-08-10T' + pad(shotHour) + ':' + pad(15 + sIndex * 10) + ':04' + offset
+        });
+        shotSeq += 1;
+      });
+    });
+  })();
 
   global.ObeliskStaticData = {
     ENTITIES,

@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Timesheet Idle View - Obelisk Activity Monitoring</title>
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('obelisk-dark') === '1') {
+          document.documentElement.classList.add('app-dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body data-page="timesheets">
   <div class="app-layout" id="appLayout">
@@ -191,7 +200,7 @@
                       <span class="emp-name">Akshay Prajapati</span>
                     </div>
                   </td>
-                  <td>2026-08-10</td>
+                  <td>10/08/2026</td>
                   <td>Obelisk ERP</td>
                   <td>Backend API & Monitoring Service</td>
                   <td><span class="hours-pill">8H 00M</span></td>
@@ -210,7 +219,7 @@
                       <span class="emp-name">Sarah Chen</span>
                     </div>
                   </td>
-                  <td>2026-08-10</td>
+                  <td>10/08/2026</td>
                   <td>Mobile Redesign</td>
                   <td>Figma UI Design System Specs</td>
                   <td><span class="hours-pill">8H 00M</span></td>
@@ -229,7 +238,7 @@
                       <span class="emp-name">Marcus Vance</span>
                     </div>
                   </td>
-                  <td>2026-08-10</td>
+                  <td>10/08/2026</td>
                   <td>Cloud Migration</td>
                   <td>Kubernetes Cluster Setup</td>
                   <td><span class="hours-pill">8H 00M</span></td>
@@ -248,7 +257,7 @@
                       <span class="emp-name">Elena Rostova</span>
                     </div>
                   </td>
-                  <td>2026-08-10</td>
+                  <td>10/08/2026</td>
                   <td>Obelisk ERP</td>
                   <td>E2E Automation Testing Suite</td>
                   <td><span class="hours-pill">8H 00M</span></td>
@@ -267,7 +276,7 @@
                       <span class="emp-name">Priya Sharma</span>
                     </div>
                   </td>
-                  <td>2026-08-10</td>
+                  <td>10/08/2026</td>
                   <td>Obelisk ERP</td>
                   <td>Database Optimization & Indexing</td>
                   <td><span class="hours-pill">8H 00M</span></td>

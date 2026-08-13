@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - Obelisk Activity Monitoring</title>
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('obelisk-dark') === '1') {
+          document.documentElement.classList.add('app-dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body data-page="dashboard">
   <div class="splash-screen" id="splashScreen">
@@ -150,58 +159,23 @@
 
       <!-- Page Content -->
       <main class="page-content">
-        <!-- Page Title & Actions -->
-        <div class="page-action-header">
-          <div class="page-headline">
-            <h1>Real-Time Activity Dashboard</h1>
-            <p>Live workforce activity monitoring, idle tracking & productivity scores across enterprise teams.</p>
-          </div>
-          <div style="display: flex; gap: 10px;">
-            <button class="btn btn-secondary" onclick="alert('Exporting activity summary CSV...')">📥 Export Report</button>
-            <a href="monitoring-settings.html" class="btn btn-primary">⚙️ Monitoring Config</a>
-          </div>
-        </div>
-
-        <!-- Bento Feature Showcase Grid -->
-        <div class="bento-grid">
-          <!-- Bento Hero Card (Span 8) -->
-          <div class="bento-card bento-hero-card bento-col-8">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; height: 100%; flex-wrap: wrap; gap: 16px;">
-              <div style="display: flex; flex-direction: column; justify-content: space-between; gap: 16px; flex: 1;">
-                <div>
-                  <span class="badge badge-accent" style="margin-bottom: 12px;">🛡️ Stealth Agent v4.2 Active</span>
-                  <h2 style="font-size: 22px; font-weight: 800; color: var(--text-main); margin-bottom: 6px;">Workforce Monitoring Intelligence</h2>
-                  <p style="font-size: 13px; color: var(--text-muted); max-width: 520px;">112 active agents capturing real-time keystrokes, active window shifts & stealth screenshots across Obelisk HQ teams.</p>
-                </div>
-                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                  <a href="employee-timeline.html" class="btn btn-primary btn-sm">⏱️ View Live Timelines</a>
-                  <a href="screenshots.html" class="btn btn-secondary btn-sm">📷 Screenshot Stream</a>
-                  <a href="consent-management.html" class="btn btn-secondary btn-sm">🛡️ Consent Policy</a>
-                </div>
-              </div>
-              <div class="metric-box-accent">
-                <div class="metric-label">Productivity Index</div>
-                <div style="font-size: 32px; font-weight: 800; color: var(--text-main); margin: 4px 0;">88.4%</div>
-                <span class="badge badge-active" style="font-size: 10px;">+2.1% today</span>
-              </div>
+        <div class="dash-welcome" id="dashWelcome">
+          <div class="dash-welcome-left">
+            <div class="dash-welcome-avatar">AP</div>
+            <div class="dash-welcome-text">
+              <h2>Good Afternoon, Akshay Prajapati!</h2>
+              <p class="dash-welcome-date">10/08/2026</p>
+              <p class="dash-welcome-meta">Agent Active • Last synced 7 min ago • Core Engineering</p>
             </div>
           </div>
-
-          <!-- Bento Metric Card (Span 4) -->
-          <div class="bento-card bento-col-4 bento-accent-card">
-            <div class="bento-card-header">
-              <span class="badge badge-productive">🔥 High Productivity</span>
-              <span style="font-size: 11px; color: var(--text-muted); font-weight: 600;">Core Engineering</span>
+          <div class="dash-welcome-right">
+            <div class="dash-welcome-hours">
+              <div class="label">Active Today</div>
+              <div class="value">6H 42M</div>
             </div>
-            <div style="margin-top: 8px;">
-              <div style="font-size: 12px; color: var(--text-muted); font-weight: 600;">Top Performing Team</div>
-              <div style="font-size: 22px; font-weight: 800; color: var(--text-main); margin-top: 2px;">96.2% Score</div>
-              <p style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">Priya Sharma leading with 7h 40m active code time today in Obelisk ERP repository.</p>
-            </div>
-            <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
-              <span style="font-size: 11.5px; font-weight: 600; color: var(--brand-primary);">Top App: Visual Studio Code</span>
-              <a href="productivity.html" style="font-size: 12px; font-weight: 700; color: var(--brand-accent);">Rules →</a>
-            </div>
+            <a class="btn btn-primary dash-welcome-action" href="employee-timeline.html?userId=412">
+              <i class="pi pi-clock"></i> View Timeline
+            </a>
           </div>
         </div>
 
@@ -210,7 +184,7 @@
           <!-- Card 1: Total Employees -->
           <div class="summary-card">
             <div class="summary-card-header">
-              <div class="summary-card-icon icon-blue">👥</div>
+              <div class="summary-card-icon icon-blue"><i class="pi pi-users"></i></div>
               <span class="badge badge-active">+12 new</span>
             </div>
             <div>
@@ -226,7 +200,7 @@
           <!-- Card 2: Active Employees -->
           <div class="summary-card">
             <div class="summary-card-header">
-              <div class="summary-card-icon icon-green">🟢</div>
+              <div class="summary-card-icon icon-green"><i class="pi pi-circle-fill"></i></div>
               <span class="badge badge-active">75% Online</span>
             </div>
             <div>
@@ -242,7 +216,7 @@
           <!-- Card 3: Currently Idle -->
           <div class="summary-card">
             <div class="summary-card-header">
-              <div class="summary-card-icon icon-amber">⏸️</div>
+              <div class="summary-card-icon icon-amber"><i class="pi pi-pause"></i></div>
               <span class="badge badge-idle">12% Idle</span>
             </div>
             <div>
@@ -258,7 +232,7 @@
           <!-- Card 4: Productive Hours -->
           <div class="summary-card">
             <div class="summary-card-header">
-              <div class="summary-card-icon icon-green">⏱️</div>
+              <div class="summary-card-icon icon-green"><i class="pi pi-clock"></i></div>
               <span class="badge badge-productive">84% Rate</span>
             </div>
             <div>
@@ -274,7 +248,7 @@
           <!-- Card 5: Unproductive Hours -->
           <div class="summary-card">
             <div class="summary-card-header">
-              <div class="summary-card-icon icon-red">⚠️</div>
+              <div class="summary-card-icon icon-red"><i class="pi pi-exclamation-triangle"></i></div>
               <span class="badge badge-unproductive">6.1% Rate</span>
             </div>
             <div>
@@ -290,7 +264,7 @@
           <!-- Card 6: Screenshots Today -->
           <div class="summary-card">
             <div class="summary-card-header">
-              <div class="summary-card-icon icon-blue">📷</div>
+              <div class="summary-card-icon icon-blue"><i class="pi pi-camera"></i></div>
               <span class="badge badge-active">Auto-Capture</span>
             </div>
             <div>
@@ -305,7 +279,7 @@
           <!-- Card 7: Last Synced -->
           <div class="summary-card">
             <div class="summary-card-header">
-              <div class="summary-card-icon icon-gray">🔄</div>
+              <div class="summary-card-icon icon-gray"><i class="pi pi-sync"></i></div>
               <span class="badge badge-synced">Agent Active</span>
             </div>
             <div>
@@ -318,54 +292,38 @@
           </div>
         </div>
 
-        <!-- Filter Bar -->
-        <div class="filter-bar">
-          <div class="filter-group">
-            <span class="filter-label">Search:</span>
-            <input type="text" id="tableSearch" class="form-control" placeholder="Employee, project or team..." style="width: 200px;">
+        <!-- Charts & insight cards -->
+        <div class="dash-charts">
+          <div class="card">
+            <h3 class="card-title">Daily productivity trend</h3>
+            <div class="chart-bar-container" id="dashDailyBars"></div>
           </div>
 
-          <div class="filter-group">
-            <span class="filter-label">Team:</span>
-            <select class="form-control">
-              <option value="">All Teams</option>
-              <option value="engineering">Core Engineering</option>
-              <option value="product">Product & UI/UX</option>
-              <option value="marketing">Digital Marketing</option>
-              <option value="qa">Quality Assurance</option>
-            </select>
+          <div class="card">
+            <h3 class="card-title">Time breakdown</h3>
+            <div class="chart-donut" id="dashDonut"></div>
+            <div class="chart-legend" id="dashDonutLegend"></div>
           </div>
 
-          <div class="filter-group">
-            <span class="filter-label">Project:</span>
-            <select class="form-control">
-              <option value="">All Projects</option>
-              <option value="obelisk">Obelisk ERP</option>
-              <option value="mobile">Mobile App Redesign</option>
-              <option value="cloud">Cloud Migration</option>
-            </select>
+          <div class="card">
+            <h3 class="card-title">Team productivity</h3>
+            <div class="hbar-list" id="dashTeamBars"></div>
           </div>
 
-          <div class="filter-group">
-            <span class="filter-label">Status:</span>
-            <select class="form-control">
-              <option value="">All Statuses</option>
-              <option value="active">Active</option>
-              <option value="idle">Idle</option>
-              <option value="offline">Offline</option>
-            </select>
+          <div class="card">
+            <h3 class="card-title">Workforce status</h3>
+            <div class="status-mix" id="dashStatusMix"></div>
+            <div class="hbar-list" id="dashStatusBars"></div>
           </div>
 
-          <div class="filter-group">
-            <span class="filter-label">Date:</span>
-            <input type="date" class="form-control" value="2026-08-10">
+          <div class="card dash-charts-wide">
+            <h3 class="card-title">Top performers today</h3>
+            <div class="top-emp-list" id="dashTopEmployees"></div>
           </div>
-
-          <button class="btn btn-secondary btn-sm" style="margin-left: auto;" onclick="alert('Filters reset')">Reset Filters</button>
         </div>
 
         <!-- Employee Monitoring Table -->
-        <div class="card" style="padding: 0; overflow: hidden;">
+        <div class="card dash-hidden-table" style="padding: 0; overflow: hidden;">
           <div style="padding: 16px 20px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
             <h2 class="card-title">Employee Live Monitoring Stream</h2>
             <span style="font-size: 12px; color: var(--text-muted);">Showing 10 of 148 Employees</span>
@@ -653,14 +611,6 @@
                 </tr>
               </tbody>
             </table>
-          </div>
-
-          <div style="padding: 12px 20px; background: var(--bg-subtle); display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color);">
-            <span style="font-size: 12px; color: var(--text-muted);">Page 1 of 15</span>
-            <div style="display: flex; gap: 6px;">
-              <button class="btn btn-secondary btn-sm" disabled>Previous</button>
-              <button class="btn btn-secondary btn-sm">Next</button>
-            </div>
           </div>
         </div>
       </main>

@@ -1,0 +1,211 @@
+/*
+ * Obelisk ERP admin theme — PrimeNG Aura tokens + navy brand.
+ * Runtime preset is Aura. Brand primary is #061944 (not Sakai orange).
+ * Dark mode: class `.app-dark` on <html> only (no media-query).
+ */
+
+:root {
+  color-scheme: light;
+
+  /* Default brand colors (navy) */
+  --primary-color: #061944;
+  --primary-color-text: #ffffff;
+  --primary-50: #f0f4fa;
+  --primary-100: #d9e2f2;
+  --primary-200: #b3c6e5;
+  --primary-300: #8da9d8;
+  --primary-400: #668ccc;
+  --primary-500: #4060bf;
+  --primary-600: #2f4d99;
+  --primary-700: #223973;
+  --primary-800: #15264d;
+  --primary-900: #0a1333;
+  --primary-950: #040a1a;
+
+  /* PrimeNG primary tokens */
+  --p-primary-color: var(--primary-color);
+  --p-primary-color-text: var(--primary-color-text);
+  --p-primary-contrast-color: var(--primary-color-text);
+  --p-primary-50: var(--primary-50);
+  --p-primary-100: var(--primary-100);
+  --p-primary-200: var(--primary-200);
+  --p-primary-300: var(--primary-300);
+  --p-primary-400: var(--primary-400);
+  --p-primary-500: var(--primary-500);
+  --p-primary-600: var(--primary-600);
+  --p-primary-700: var(--primary-700);
+  --p-primary-800: var(--primary-800);
+  --p-primary-900: var(--primary-900);
+  --p-primary-950: var(--primary-950);
+
+  /* Aura surface scale (does not invert; dark mode picks higher steps) */
+  --p-surface-0: #ffffff;
+  --p-surface-50: #fafafa;
+  --p-surface-100: #f4f4f5;
+  --p-surface-200: #e4e4e7;
+  --p-surface-300: #d4d4d8;
+  --p-surface-400: #a1a1aa;
+  --p-surface-500: #71717a;
+  --p-surface-600: #52525b;
+  --p-surface-700: #3f3f46;
+  --p-surface-800: #27272a;
+  --p-surface-900: #18181b;
+  --p-surface-950: #09090b;
+
+  --p-text-color: #18181b;
+  --p-text-muted-color: #71717a;
+  --p-content-background: var(--p-surface-0);
+  --p-content-hover-background: var(--p-surface-100);
+  --p-content-border-color: var(--p-surface-200);
+  --p-content-border-radius: 12px;
+  --p-overlay-popover-background: var(--p-surface-0);
+  --p-mask-background: rgba(0, 0, 0, 0.4);
+  --p-transition-duration: 0.2s;
+  --p-highlight-background: var(--primary-500);
+  --p-highlight-color: var(--primary-color-text);
+
+  --p-focus-ring-width: 1px;
+  --p-focus-ring-style: solid;
+  --p-focus-ring-color: var(--primary-200);
+  --p-focus-ring-offset: 2px;
+  --p-focus-ring-shadow: 0 0 0 0.2rem var(--primary-200);
+
+  /* Button tokens */
+  --p-button-bg: var(--primary-color);
+  --p-button-border: var(--primary-color);
+  --p-button-text-color: var(--primary-color-text);
+  --p-button-hover-bg: var(--primary-600);
+  --p-button-hover-border: var(--primary-600);
+  --p-button-active-bg: var(--primary-700);
+  --p-button-active-border: var(--primary-700);
+  --p-button-focus-shadow: 0 0 0 0.2rem var(--primary-200);
+
+  /* Sakai layout CSS variable bridge (--primary-color stays the brand hex) */
+  --primary-contrast-color: var(--p-primary-contrast-color);
+  --text-color: var(--p-text-color);
+  --text-color-secondary: var(--p-text-muted-color);
+  --surface-border: var(--p-content-border-color);
+  --surface-card: var(--p-content-background);
+  --surface-hover: var(--p-content-hover-background);
+  --surface-overlay: var(--p-overlay-popover-background);
+  --maskbg: var(--p-mask-background);
+  --content-border-radius: var(--p-content-border-radius);
+  --transition-duration: var(--p-transition-duration);
+  --layout-section-transition-duration: 0.2s;
+  --element-transition-duration: var(--p-transition-duration);
+  --focus-ring: var(--p-focus-ring-shadow);
+  --focus-ring-width: var(--p-focus-ring-width);
+  --focus-ring-style: var(--p-focus-ring-style);
+  --focus-ring-color: var(--p-focus-ring-color);
+  --focus-ring-offset: var(--p-focus-ring-offset);
+  --focus-ring-shadow: var(--p-focus-ring-shadow);
+
+  /* Light mode extras */
+  --surface-ground: var(--p-surface-100);
+  --code-background: var(--p-surface-900);
+  --code-color: var(--p-surface-200);
+
+  /* Splash / loader accent (orange only here, not app primary) */
+  --splash-bg: #0f1b33;
+  --loader-color: #ed7d31;
+
+  /* Semantic status (domain, not brand) */
+  --productive-green: #10b981;
+  --productive-bg: color-mix(in srgb, #10b981 12%, transparent);
+  --productive-border: color-mix(in srgb, #10b981 28%, transparent);
+  --present-green: #16a34a;
+  --present-bg: color-mix(in srgb, #16a34a 12%, transparent);
+  --present-border: color-mix(in srgb, #16a34a 28%, transparent);
+  --unproductive-red: #ef4444;
+  --unproductive-bg: color-mix(in srgb, #ef4444 12%, transparent);
+  --unproductive-border: color-mix(in srgb, #ef4444 28%, transparent);
+  --critical-red: #dc2626;
+  --critical-bg: color-mix(in srgb, #dc2626 12%, transparent);
+  --critical-border: color-mix(in srgb, #dc2626 28%, transparent);
+  --idle-amber: #F68E34;
+  --idle-bg: color-mix(in srgb, #F68E34 12%, transparent);
+  --idle-border: color-mix(in srgb, #F68E34 28%, transparent);
+  --neutral-gray: var(--p-text-muted-color);
+  --neutral-bg: var(--p-surface-100);
+  --neutral-border: var(--p-surface-200);
+  --sync-blue: var(--primary-color);
+  --sync-bg: var(--primary-50);
+  --sync-border: var(--primary-100);
+
+  /* Backward-compatible aliases used in existing markup */
+  --brand-primary: var(--primary-color);
+  --brand-white: var(--primary-color-text);
+  --brand-accent: #F68E34;
+  --brand-accent-alt: #ed7d31;
+  --brand-splash: var(--splash-bg);
+  --accent-50: var(--idle-bg);
+  --accent-100: color-mix(in srgb, #F68E34 18%, transparent);
+  --accent-500: #F68E34;
+  --accent-600: #ed7d31;
+  --bg-app: var(--surface-ground);
+  --bg-surface: var(--surface-card);
+  --bg-subtle: var(--p-surface-100);
+  --border-color: var(--surface-border);
+  --border-hover: var(--p-surface-300);
+  --border-bento: var(--surface-border);
+  --border-bento-hover: var(--p-surface-300);
+  --text-main: var(--text-color);
+  --text-muted: var(--text-color-secondary);
+  --text-light: var(--p-surface-400);
+  --text-on-dark: #ffffff;
+
+  --sidebar-width: 20rem;
+  --sidebar-collapsed-width: 5rem;
+  --header-height: 4rem;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-bento: var(--content-border-radius);
+  --radius-bento-inner: 8px;
+  --shadow-sm: 0px 3px 5px rgba(0, 0, 0, 0.02), 0px 0px 2px rgba(0, 0, 0, 0.05), 0px 1px 4px rgba(0, 0, 0, 0.08);
+  --shadow-md: var(--shadow-sm);
+  --shadow-lg: 0 12px 24px -4px rgba(15, 23, 42, 0.08);
+  --shadow-bento: none;
+  --shadow-bento-hover: none;
+  --font-sans: 'Lato', sans-serif;
+  --font-display: 'Lato', sans-serif;
+  --transition-fast: var(--transition-duration);
+  --transition-normal: var(--transition-duration);
+}
+
+/* Dark mode extras — class on <html> only */
+:root[class*='app-dark'] {
+  color-scheme: dark;
+
+  --p-text-color: #fafafa;
+  --p-text-muted-color: #a1a1aa;
+  --p-content-background: var(--p-surface-900);
+  --p-content-hover-background: var(--p-surface-800);
+  --p-content-border-color: var(--p-surface-700);
+  --p-overlay-popover-background: var(--p-surface-900);
+  --p-mask-background: rgba(0, 0, 0, 0.6);
+  --p-focus-ring-color: var(--primary-700);
+
+  --surface-ground: var(--p-surface-950);
+  --code-background: var(--p-surface-800);
+  --code-color: var(--p-surface-100);
+
+  --bg-subtle: var(--p-surface-800);
+  --text-light: var(--p-surface-500);
+  --neutral-bg: var(--p-surface-800);
+  --neutral-border: var(--p-surface-700);
+  --sync-bg: color-mix(in srgb, var(--primary-400) 16%, transparent);
+  --sync-border: color-mix(in srgb, var(--primary-400) 28%, transparent);
+  --sync-blue: var(--primary-300);
+
+  /* Keep navy buttons readable; lighten primary used for text/links */
+  --p-primary-color: var(--primary-300);
+  --p-primary-contrast-color: var(--primary-950);
+  --p-button-bg: var(--primary-color);
+  --p-button-border: var(--primary-color);
+  --p-button-text-color: #ffffff;
+  --p-button-hover-bg: var(--primary-600);
+  --p-button-hover-border: var(--primary-600);
+  --p-button-active-bg: var(--primary-700);
+  --p-button-active-border: var(--primary-700);
+}
